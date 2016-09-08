@@ -3,6 +3,7 @@ package edu.curso.java.services;
 import java.util.List;
 
 import edu.curso.java.bo.Proyecto;
+import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.autocomplete.ItemAutoComplete;
 
@@ -23,5 +24,6 @@ public interface ProyectoService {
 	public Long actualizarProyecto(Proyecto proyecto, Long idUsuarioPrincipal, List<Long> idUsuarios);
 	public List<Proyecto> buscarProyectosPorNombre(String term);
 	Long guardarProyecto(Proyecto proyecto, Long idUsuarioPrincipal, List<Long> idUsuarios);
-
+	
+	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto);
 }

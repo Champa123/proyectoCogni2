@@ -27,11 +27,14 @@
 				data-id-proyecto="${p.id}">Ver</button>
 				
 				<a href="editarproyecto.html?id=${p.id}" 
-					class="btn btn-success">Editar</a>
+					class="btn btn-info">Editar</a>
 				
 				<button type="button" 
-					data-id-proyecto="${p.id}" class="vertareas btn btn-warning">Ver Tareas</button>
-								
+					data-id-proyecto="${p.id}" class="vertareas btn btn-success">Ver Tareas</button>
+				
+				<a href="guardarnuevatarea.html?id=${p.id}" 
+					class="btn btn-warning">Agregar Tarea</a>
+											
 				<a href="borrarproyecto.html?id=${p.id}" 
 					class="btn btn-danger">Borrar</a>
 					

@@ -28,7 +28,8 @@ import edu.curso.java.services.UsuarioService;
 public class TareaController {
 
 	private static final Logger log = Logger.getLogger(TareaController.class);
-	
+	@Autowired
+	private ProyectoService proyectoService;
 	@Autowired
 	private TareaService tareaService;
 
@@ -51,10 +52,10 @@ public class TareaController {
 	}
 	
 	@RequestMapping(value = "/nuevatarea")
-	public String nuevaTarea(Model model) {
+	public String nuevaTarea(Model model, @RequestParam Long id) {
 		model.addAttribute("tareaForm", new TareaForm());
-		
-		return "/tarea/form";
+		model.addAttribute("ID",id);
+		return "/tareas/form";
 	}
 	
 	@RequestMapping(value = "/editartarea")
@@ -76,28 +77,11 @@ public class TareaController {
 		Long idActual = tareaForm.getId();
 			tarea = new Tarea();
 			tarea.setTitulo(tareaForm.getTitulo());
-			
-			idActual = tareaService.guardarTarea(tarea);
+			tarea.setId(idActual);
+			proyectoService.guardarTareaProyecto(tarea, id);
 		
 		
 		
-		
-		return "redirect:/proyecto/vertarea.html?id=" + id;
+		return "redirect:/proyectos/index.html";
 }
-	
-
-	
-//	@RequestMapping(value = "/guardaredittarea", method = RequestMethod.POST)
-//	public String guardarEditTarea(@ModelAttribute("tareaForm") TareaForm tareaForm, Model model) {
-//		Tarea tarea = null;
-//		Long idActual = tareaForm.getId();
-//				if(idActual != null){
-//			tarea= tareaService.recuperarTareaPorId(idActual);
-//			tarea.setTitulo(tareaForm.getTitulo());
-//			idActual = tareaService.editarTarea(tarea);
-//		} 
-//		
-//		 
-//		return "redirect:/tareas/vertarea.html?id=" + idActual;
-//}
 	}

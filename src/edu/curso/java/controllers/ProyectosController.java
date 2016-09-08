@@ -19,6 +19,7 @@ import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.forms.ProyectoForm;
 import edu.curso.java.controllers.forms.UsuarioForm;
 import edu.curso.java.services.ProyectoService;
+import edu.curso.java.services.TareaService;
 import edu.curso.java.services.UsuarioService;
 
 @Controller
@@ -29,6 +30,8 @@ public class ProyectosController {
 	
 	@Autowired
 	private ProyectoService proyectoService;
+	@Autowired
+	private TareaService tareaService;
 
 	@Autowired
 	private UsuarioService usuarioService;
@@ -177,14 +180,10 @@ public class ProyectosController {
 		model.addAttribute("tareas",tareas);
 		return "/tareas/vertarea";
 	}
-	@RequestMapping (value="agregartarea")
-	public String agregarTarea(@RequestParam Long id, Model model){
-		Proyecto proyecto = proyectoService.recuperarProyectoPorId(id);
-		
-		
-		
-		return null;
-	}
 	
+	@RequestMapping(value = "/guardarnuevatarea", method = RequestMethod.GET)
+	public String guardarNuevaTarea(@RequestParam Long id, Model model) {
+		return "redirect:/tareas/nuevatarea.html?id="+id;
+	}
 	
 	}
