@@ -1,5 +1,9 @@
 package edu.curso.java.controllers.forms;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class UsuarioForm {
 
 	private Long id;
@@ -7,6 +11,8 @@ public class UsuarioForm {
 	private String usuario;
 	private String password;
 	private boolean activo;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date fechaAlta = new Date();
 	
 	public Long getId() {
 		return id;
@@ -37,6 +43,12 @@ public class UsuarioForm {
 	}
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
 	}
 
 }

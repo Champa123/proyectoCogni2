@@ -5,16 +5,24 @@
 
 <c:import url="/general/template_top.jsp" />
 
+<script>
+	$(function() {
+// 		$('#usuarioForm').validate();
+		$('#fechaAlta').datepicker({"dateFormat": "yy-mm-dd"});
+	});
+</script>
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <br>
 <br>
 <br>
 	<form:form method="post" modelAttribute="usuarioForm" action="guardarusuario.html">
 		<form:input path="id" type="hidden" />
-		ApeNom<form:input class="form-control" path="nombreCompleto" type="text" />
+		Nombre y apellido: <form:input class="form-control" path="nombreCompleto" type="text" />
 		User: <form:input class="form-control" path="usuario" type="text" />
 		Password: <form:input  class="form-control" path="password" type="password" />
-		¿Activo?<form:checkbox  path="activo"/>
+		Fecha de alta: <form:input id="fechaAlta" path="fechaAlta" class="form-control required" type="text" />
+		¿Activo? <form:checkbox  path="activo"/>
 		<br>
 		<input type="submit" class="btn btn-success" value="Guardar">
 		<a href="listar.html" 

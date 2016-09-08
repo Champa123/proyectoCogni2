@@ -1,6 +1,6 @@
 package edu.curso.java.bo;
 
-import java.util.List;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -11,14 +11,20 @@ public class Usuario {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
 	private String nombreCompleto;
 	private String usuario;
 	private String password;
 	private boolean activo;
+	private Date fechaAlta;
 	@OneToMany
 	private List<Rol> roles;
 	
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
 	public Long getId() {
 		return id;
 	}

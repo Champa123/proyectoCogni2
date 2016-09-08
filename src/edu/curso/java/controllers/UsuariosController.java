@@ -56,6 +56,7 @@ public class UsuariosController {
 		usuario.setUsuario(usuarioForm.getUsuario());
 		usuario.setPassword(usuarioForm.getPassword());
 		usuario.setActivo(usuarioForm.isActivo());
+		usuario.setFechaAlta(usuarioForm.getFechaAlta());
 
 		Long idGenerado = usuarioService.crearNuevoUsuario(usuario);
 
@@ -72,6 +73,7 @@ public class UsuariosController {
 		usuarioForm.setUsuario(usuario.getUsuario());
 		usuarioForm.setPassword(usuario.getPassword());
 		usuarioForm.setId(usuario.getId());
+		usuarioForm.setFechaAlta(usuario.getFechaAlta());
 		model.addAttribute("usuarioForm", usuarioForm);
 		return "/usuarios/formeditado";
 	}
@@ -84,6 +86,7 @@ public class UsuariosController {
 		usuario.setPassword(usuarioForm.getPassword());
 		usuario.setActivo(usuarioForm.isActivo());
 		usuario.setId(id);
+		usuario.setFechaAlta(usuarioForm.getFechaAlta());
 		 usuarioService.editarUsuario(usuario);
 
 		return "redirect:/usuarios/verusuario.html?id="+ usuario.getId();

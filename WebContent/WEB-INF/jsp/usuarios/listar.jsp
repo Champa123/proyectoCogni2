@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:import url="/general/template_top.jsp" />
 
@@ -15,6 +16,7 @@
 		<th>Id</th>
 		<th>Usuario</th>
 		<th>Nombre Completo</th>
+		<th>Fecha de alta</th>
 		<th>Activo</th>
 		<th></th>
 	</tr>
@@ -23,6 +25,7 @@
 			<td>${u.id}</td>
 			<td>${u.usuario}</td>
 			<td>${u.nombreCompleto}</td>
+			<td><fmt:formatDate value="${u.fechaAlta}" pattern="yyyy-MM-dd" /></td>
 			<td><c:if test="${u.activo}">
   			<c:out value="Si"/></c:if>
   			<c:if test="${u.activo == false}">
