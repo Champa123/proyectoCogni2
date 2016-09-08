@@ -9,17 +9,18 @@ public class Proyecto {
 	
 	@Id
 	@GeneratedValue
-	private Long id;
-	
+	private Long id;	
 	private String nombre;
 	private String descripcion;
 	@ManyToOne
 	private Usuario usuarioPrincipal;
 	@ManyToMany
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
-	
 	@OneToMany
 	private List<Tarea> tareas = new ArrayList<>();
+	private Date fechaInicio;
+	private Date fechaFin;
+	
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
@@ -66,6 +67,22 @@ public class Proyecto {
 
 	public void setUsuarioPrincipal(Usuario usuarioPrincipal) {
 		this.usuarioPrincipal = usuarioPrincipal;
+	}
+
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 	
 	
