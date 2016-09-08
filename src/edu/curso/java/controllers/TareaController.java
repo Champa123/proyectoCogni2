@@ -27,7 +27,7 @@ import edu.curso.java.services.UsuarioService;
 @RequestMapping("/tareas")
 public class TareaController {
 
-	private static final Logger log = Logger.getLogger(TareaController.class);
+	
 	@Autowired
 	private ProyectoService proyectoService;
 	@Autowired
@@ -44,11 +44,17 @@ public class TareaController {
 		model.addAttribute("tarea", tarea);
 		return null;
 	}
+
+	@RequestMapping(value = "/listartareas")
+	public String listarTareas( Model model) {
+		List <Tarea> tareas = tareaService.listarTareas();
+		model.addAttribute("tareas", tareas);
+		return null;
+	}
 	
 	@RequestMapping(value = "/borrartarea")
 	public String borrarTarea(@RequestParam Long id, Model model) {
-		tareaService.borrarTareaPorId(id);
-		return "redirect:/tareas/index.html";
+	return null;
 	}
 	
 	@RequestMapping(value = "/nuevatarea")
@@ -80,6 +86,18 @@ public class TareaController {
 			tarea.setId(idActual);
 			proyectoService.guardarTareaProyecto(tarea, id);
 		
+		
+		
+		return "redirect:/proyectos/index.html";
+}
+	@RequestMapping(value = "/guardarediciontarea", method = RequestMethod.POST)
+	public String guardarEdicionTarea(@RequestParam Long id ,@ModelAttribute("tareaForm") TareaForm tareaForm, Model model) {
+		Tarea tarea = tareaService.recuperarTareaPorId(id);
+		
+		
+			tarea.setTitulo(tareaForm.getTitulo());
+			
+			tareaService.editarTarea(tarea);
 		
 		
 		return "redirect:/proyectos/index.html";

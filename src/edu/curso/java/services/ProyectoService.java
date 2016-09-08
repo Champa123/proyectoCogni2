@@ -26,4 +26,5 @@ public interface ProyectoService {
 	Long guardarProyecto(Proyecto proyecto, Long idUsuarioPrincipal, List<Long> idUsuarios);
 	
 	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto);
+	public void guardarEdicionTareaProyecto(Tarea tarea, Long idProyecto);
 }
