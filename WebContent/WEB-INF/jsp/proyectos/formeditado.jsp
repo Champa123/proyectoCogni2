@@ -10,6 +10,7 @@
 $(function(){
 	$("#select-single").select2();
 	$(".js-example-basic-multiple").select2();
+	$('.fecha').datepicker({"dateFormat": "yy-mm-dd"});
 	$('#proyectoForm').validate();
 })
 
@@ -27,6 +28,14 @@ $(function(){
 		<div class="form-group">
 		<label for="descripcion">Descripcion</label>
 		<form:textarea class="form-control required" path="descripcion" />
+		</div>
+		<div class="form-group">
+			<label for="fechaInicio">Fecha de inicio</label>
+			<form:input class="form-control required fecha" path="fechaInicio" />
+		</div>
+		<div class="form-group">
+			<label for="fechaFin">Fecha de fin</label>
+			<form:input class="form-control required fecha" path="fechaFin" />
 		</div>
 		<div class="form-group">
 		<label for="idUsuarioPrincipal">Usuario Principal</label>

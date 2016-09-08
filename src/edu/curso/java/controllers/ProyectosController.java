@@ -93,6 +93,8 @@ public class ProyectosController {
 		proyectoForm.setNombre(proyecto.getNombre());
 		proyectoForm.setIdUsuarioPrincipal(usuarioPpal.getId());
 		proyectoForm.setIdUsuarios(idUsuarios);
+		proyectoForm.setFechaInicio(proyecto.getFechaInicio());
+		proyectoForm.setFechaFin(proyecto.getFechaFin());
 		model.addAttribute("proyectoForm", proyectoForm);
 		model.addAttribute("proyecto",proyecto);
 		model.addAttribute("usuarios", usuarioService.recuperarUsuarios());
@@ -120,10 +122,13 @@ public class ProyectosController {
 		Long idUsuarioPrincipal = proyectoForm.getIdUsuarioPrincipal();
 		List<Long> idUsuarios = proyectoForm.getIdUsuarios();
 
-			proyecto = new Proyecto();
-			proyecto.setNombre(proyectoForm.getNombre());
-			proyecto.setDescripcion(proyectoForm.getDescripcion());
-			idActual = proyectoService.guardarProyecto(proyecto, idUsuarioPrincipal, idUsuarios);
+		proyecto = new Proyecto();
+		proyecto.setNombre(proyectoForm.getNombre());
+		proyecto.setDescripcion(proyectoForm.getDescripcion());
+		proyecto.setFechaInicio(proyectoForm.getFechaInicio());
+		proyecto.setFechaFin(proyectoForm.getFechaFin());
+		
+		idActual = proyectoService.guardarProyecto(proyecto, idUsuarioPrincipal, idUsuarios);
 		
 		
 		
@@ -165,6 +170,9 @@ public class ProyectosController {
 			proyecto.setNombre(proyectoForm.getNombre());
 			proyecto.setDescripcion(proyectoForm.getDescripcion());
 			proyecto.setId(idActual);
+			proyecto.setFechaInicio(proyectoForm.getFechaInicio());
+			proyecto.setFechaFin(proyectoForm.getFechaFin());
+			
 			idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
 		} 
 		
