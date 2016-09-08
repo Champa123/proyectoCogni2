@@ -65,6 +65,7 @@ public class ProyectoDAOImp implements ProyectoDAO {
 		return  query.list();
 		
 	}
+	
 
 	
 }

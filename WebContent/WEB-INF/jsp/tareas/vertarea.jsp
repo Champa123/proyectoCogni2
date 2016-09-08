@@ -6,7 +6,7 @@
 <table class="table table-striped table-bordered table-hover">
 	<tr>
 		<th>Id</th>
-		<th>Nombre</th>
+		<th>Titulo</th>
 		<th></th>
 		
 		<th></th>
@@ -14,7 +14,7 @@
 	<c:forEach items="${tareas}" var="t">
 		<tr>
 			<td>${t.id}</td>
-			<td>${t.nombre}</td>
+			<td>${t.titulo}</td>
 			<td>
    
    

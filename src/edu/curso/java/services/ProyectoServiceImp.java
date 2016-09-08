@@ -7,15 +7,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.curso.java.bo.Proyecto;
+import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.autocomplete.ItemAutoComplete;
 import edu.curso.java.dao.ProyectoDAO;
+import edu.curso.java.dao.TareaDAO;
 import edu.curso.java.dao.UsuarioDAO;
 
 @Service
 @Transactional
 public class ProyectoServiceImp implements ProyectoService {
 
+	@Autowired
+	TareaDAO tareaDAO;
 	@Autowired
 	ProyectoDAO proyectoDAO;
 	@Autowired
@@ -87,4 +91,12 @@ public class ProyectoServiceImp implements ProyectoService {
 		return proyectoDAO.buscarProyectoPorNombre(term);
 	}
 	
+	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto){
+		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
+		proyecto.getTareas().add(tarea);
+		proyectoDAO.editarProyecto(proyecto);
+		Long idActual=tareaDAO.guardarTarea(tarea);
+		
+		return idActual;
+	}
 }
