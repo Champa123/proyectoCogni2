@@ -9,18 +9,23 @@
 
 
 <h1>Listado de Tareas</h1>
-<a href="nuevatarea.html" class="btn btn-warning">Agregar nueva tarea </a>
-<br>
-<br>
-<form class="form-inline" id="buscador" method="post" action="buscadorproyectos.html">
-	<input type="text" id="textoBuscar" name="textoBuscar" placeholder="Buscar..." class="ui-widget">
-	<input id="btnBuscar" type="button" value="Buscar">
-</form>			
 
-<div id="divResultado"></div>
-<div id="divTareas"></div>
-<div class="modal fade" id="myModal" role="dialog"></div>
+<br>
+<table class="table table-striped table-bordered table-hover">
+	<tr>
+		<th>Id</th>
+		<th>Titulo</th>
+	
 
+	</tr>
+	<c:forEach items="${tareas}" var="t">
+		<tr>
+			<td>${t.id}</td>
+			<td>${t.titulo}</td>
+	
+		</tr>
+	</c:forEach>
+</table>
 
 
 <c:import url="/general/template_bottom.jsp" />

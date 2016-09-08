@@ -90,7 +90,7 @@ public class ProyectoServiceImp implements ProyectoService {
 	public List<Proyecto> buscarProyectosPorNombre(String term) {
 		return proyectoDAO.buscarProyectoPorNombre(term);
 	}
-	
+	@Override
 	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto){
 		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
 		proyecto.getTareas().add(tarea);
@@ -98,5 +98,14 @@ public class ProyectoServiceImp implements ProyectoService {
 		Long idActual=tareaDAO.guardarTarea(tarea);
 		
 		return idActual;
+	}
+	@Override
+	public void guardarEdicionTareaProyecto(Tarea tarea, Long idProyecto){
+		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
+		
+		proyectoDAO.editarProyecto(proyecto);
+		tareaDAO.editarTarea(tarea);
+		
+		
 	}
 }

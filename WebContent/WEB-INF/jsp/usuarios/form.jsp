@@ -7,7 +7,7 @@
 
 <script>
 	$(function() {
-// 		$('#usuarioForm').validate();
+		$('#usuarioForm').validate();
 		$('#fechaAlta').datepicker({"dateFormat": "yy-mm-dd"});
 	});
 </script>
@@ -18,9 +18,9 @@
 <br>
 	<form:form method="post" modelAttribute="usuarioForm" action="guardarusuario.html">
 		<form:input path="id" type="hidden" />
-		Nombre y apellido: <form:input class="form-control" path="nombreCompleto" type="text" />
-		User: <form:input class="form-control" path="usuario" type="text" />
-		Password: <form:input  class="form-control" path="password" type="password" />
+		Nombre y apellido: <form:input class="form-control required" path="nombreCompleto" type="text" />
+		User: <form:input class="form-control required" path="usuario" type="text" />
+		Password: <form:input  class="form-control required" path="password" type="password" />
 		Fecha de alta: <form:input id="fechaAlta" path="fechaAlta" class="form-control required" type="text" />
 		¿Activo? <form:checkbox  path="activo"/>
 		<br>

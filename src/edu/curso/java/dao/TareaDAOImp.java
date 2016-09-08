@@ -41,6 +41,14 @@ public class TareaDAOImp implements TareaDAO {
 		sessionFactory.getCurrentSession().update(tarea);	
 	}
 
+
+	@Override
+	public List<Tarea> listarTareas() {
+		String hql = "From Tarea as t order by t.titulo";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		return query.list();
+	}
+
 	
 	
 	

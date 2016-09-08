@@ -30,6 +30,7 @@ public class ProyectosController {
 	
 	@Autowired
 	private ProyectoService proyectoService;
+
 	@Autowired
 	private TareaService tareaService;
 
@@ -184,6 +185,12 @@ public class ProyectosController {
 	@RequestMapping(value = "/guardarnuevatarea", method = RequestMethod.GET)
 	public String guardarNuevaTarea(@RequestParam Long id, Model model) {
 		return "redirect:/tareas/nuevatarea.html?id="+id;
+	}
+	@RequestMapping(value = "/modaltarea")
+	public String modalTarea(@RequestParam Long id, Model model) {
+		Tarea tarea = tareaService.recuperarTareaPorId(id);
+		model.addAttribute("tarea", tarea);
+		return null;
 	}
 	
 	}
