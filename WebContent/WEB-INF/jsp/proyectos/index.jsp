@@ -35,8 +35,16 @@ $(document).ready(function(){
 	$("#divResultado").delegate(".btn-modal", "click", function(){
 		var id = $(this).data("id-proyecto");
 		$.get("modal.html?id=" + id, function(resp){
-			$("#myModal").html(resp);
-			$("#myModal").modal("show");
+			$("#myModalProyecto").html(resp);
+			$("#myModalProyecto").modal("show");
+		});
+	});
+	
+	$("#divTareas").delegate(".btn-modal-tarea", "click", function(){
+		var id = $(this).data("id-tarea");
+		$.get("modaltarea.html?id=" + id, function(resp){
+			$("#myModalTarea").html(resp);
+			$("#myModalTarea").modal("show");
 		});
 	});
 	
@@ -70,8 +78,8 @@ function hacerBusqueda (){
 
 <div id="divResultado"></div>
 <div id="divTareas"></div>
-<div class="modal fade" id="myModal" role="dialog"></div>
-
+<div class="modal fade" id="myModalProyecto" role="dialog"></div>
+<div class="modal fade" id="myModalTarea" role="dialog"></div>
 
 <!-- <table class="table table-striped table-bordered table-hover"> -->
 <!-- 	<tr> -->

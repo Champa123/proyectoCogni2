@@ -50,6 +50,13 @@ public class TareaServiceImp implements TareaService {
 	}
 
 
+	@Override
+	public List<Tarea> listarTareas() {
+		List<Tarea> tareas = tareaDAO.listarTareas();
+		return tareas;
+	}
+
+
 	
 	
 }

@@ -16,7 +16,8 @@ public interface TareaService {
 	void borrarTareaPorId(Long id);
 	
 	void editarTarea(Tarea tarea);
-
+	
+	List<Tarea> listarTareas();
 	
 
 

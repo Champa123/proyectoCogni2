@@ -8,24 +8,21 @@
 		<th>Id</th>
 		<th>Titulo</th>
 		<th></th>
-		
-		<th></th>
+
 	</tr>
 	<c:forEach items="${tareas}" var="t">
 		<tr>
 			<td>${t.id}</td>
 			<td>${t.titulo}</td>
-			<td>
+			<td align="center">
    
    
-				<button type="button" class="btn btn-primary btn-modal" data-toggle="modal" 
+				<button type="button" class="btn btn-primary btn-modal-tarea" data-toggle="modal" 
 				data-id-tarea="${t.id}">Ver</button>
 				
-				<a href="editartarea.html?id=${t.id}" 
+				<a href="/trackandbug/tareas/editartarea.html?id=${t.id}" 
 					class="btn btn-success">Editar</a>
 				
-				<a href="borrartarea.html?id=${t.id}" 
-					class="btn btn-danger">Borrar</a>
 					
 					
 			</td>
