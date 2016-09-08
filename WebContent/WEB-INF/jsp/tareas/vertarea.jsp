@@ -10,7 +10,7 @@
 		<th></th>
 
 	</tr>
-	<c:forEach items="${tareas}" var="t">
+	<c:forEach items="${tarea}" var="t">
 		<tr>
 			<td>${t.id}</td>
 			<td>${t.titulo}</td>

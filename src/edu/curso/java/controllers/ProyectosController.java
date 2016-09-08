@@ -133,7 +133,7 @@ public class ProyectosController {
 		
 		
 		
-		return "redirect:/proyecto/verproyecto.html?id=" + id;
+		return "redirect:/proyectos/verproyecto.html?id=" + idActual;
 }
 	
 	
