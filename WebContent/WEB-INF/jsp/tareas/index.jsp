@@ -19,12 +19,14 @@
   <tr>
     <th>Id</th>
     <th>Título</th>
+    <th>Horas</th>
     <th></th>
   </tr>
   <c:forEach items="${tarea}" var="t">
   	<tr>
 	    <td>${t.id}</td>
 	    <td>${t.titulo}</td>
+	    <td>${t.horas}</td>
 	    <td>
 	    	<a href="vertarea.html?id=${t.id}" 
 					class="btn btn-default">Ver</a>

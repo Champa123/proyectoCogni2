@@ -15,6 +15,10 @@
 		<label for="titulo">Titulo</label>
 		<form:input class="form-control" path="titulo" type="text" />
 		</div>
+		<div class="form-group">
+			<label for="horas">Horas</label>
+			<form:input class="form-control" path="horas" type="number" />
+		</div>
 <!-- 		<div class="form-group"> -->
 <!-- 		<label for="descripcion">Descripcion</label> -->
 <%-- 		<form:textarea class="form-control" path="descripcion" /> --%>

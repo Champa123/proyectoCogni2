@@ -7,6 +7,7 @@
 	<tr>
 		<th>Id</th>
 		<th>Titulo</th>
+		<th>Horas</th>
 		<th></th>
 
 	</tr>
@@ -14,6 +15,7 @@
 		<tr>
 			<td>${t.id}</td>
 			<td>${t.titulo}</td>
+			<td>${t.horas}</td>
 			<td align="center">
    
    

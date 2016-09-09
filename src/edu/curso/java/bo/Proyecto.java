@@ -20,6 +20,7 @@ public class Proyecto {
 	private List<Tarea> tareas = new ArrayList<>();
 	private Date fechaInicio;
 	private Date fechaFin;
+	private int horas;
 	
 	public List<Usuario> getUsuarios() {
 		return usuarios;
@@ -84,7 +85,5 @@ public class Proyecto {
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-	
-	
 	
 }

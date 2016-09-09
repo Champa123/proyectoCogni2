@@ -68,9 +68,11 @@ public class TareaController {
 	public String editarTarea(@RequestParam Long id, Model model) {
 		Tarea tarea = tareaService.recuperarTareaPorId(id);
 		TareaForm tareaForm = new TareaForm();
+		
 		tareaForm.setId(tarea.getId());
-//		tareaForm.getComentarios(tarea.getComentarios);
 		tareaForm.setTitulo(tarea.getTitulo());
+		tareaForm.setHoras(tarea.getHoras());
+		
 		model.addAttribute("tareaForm", tareaForm);
 		model.addAttribute("tarea",tarea);
 		return "/tareas/formeditado";
@@ -85,6 +87,7 @@ public class TareaController {
 			tarea.setTitulo(tareaForm.getTitulo());
 			//tarea.getComentarios(tareaForm.getComentarios())
 			tarea.setId(idActual);
+			tarea.setHoras(tareaForm.getHoras());
 			proyectoService.guardarTareaProyecto(tarea, id);
 		
 		
@@ -97,7 +100,8 @@ public class TareaController {
 		
 		
 			tarea.setTitulo(tareaForm.getTitulo());
-			//tarea.getComentarios(tareaForm.getComentarios());
+			tarea.setHoras(tareaForm.getHoras());
+			
 			tareaService.editarTarea(tarea);
 		
 		
