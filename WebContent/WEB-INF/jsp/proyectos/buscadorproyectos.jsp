@@ -12,6 +12,8 @@
 		<th>Fecha de inicio</th>
 		<th>Fecha de fin</th>
 		<th>Usuario Principal</th>
+		<th>Horas asignadas</th>
+		<th>Horas disponibles</th>
 		<th></th>
 	</tr>
 	<c:forEach items="${proyectos}" var="p">
@@ -25,6 +27,8 @@
 				<c:if test="${not empty p.usuarioPrincipal}">
 					${p.usuarioPrincipal.nombreCompleto}</c:if>
 			</td>
+			<td>${p.horasAsignadas}</td>
+			<td>${p.horasAsignadas - p.sumaHorasTareas}</td>
 			<td align="center">
    
    

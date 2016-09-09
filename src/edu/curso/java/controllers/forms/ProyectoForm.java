@@ -22,8 +22,8 @@ public class ProyectoForm {
 	private Date fechaInicio = new Date();
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaFin = new Date();
-	private int horasAsignadas;
-	private int sumaHorasTareas;
+	private Long horasAsignadas;
+	private Long sumaHorasTareas = new Long(0);//TODO esto creo que no hace falta
 	
 	public Long getIdUsuarioPrincipal() {
 		return idUsuarioPrincipal;
@@ -121,25 +121,25 @@ public class ProyectoForm {
 
 
 
-	public int getHorasAsignadas() {
+	public Long getHorasAsignadas() {
 		return horasAsignadas;
 	}
 
 
 
-	public void setHorasAsignadas(int horasAsignadas) {
+	public void setHorasAsignadas(Long horasAsignadas) {
 		this.horasAsignadas = horasAsignadas;
 	}
 
 
 
-	public int getSumaHorasTareas() {
+	public Long getSumaHorasTareas() {
 		return sumaHorasTareas;
 	}
 
 
 
-	public void setSumaHorasTareas(int sumaHorasTareas) {
+	public void setSumaHorasTareas(Long sumaHorasTareas) {
 		this.sumaHorasTareas = sumaHorasTareas;
 	}
 	

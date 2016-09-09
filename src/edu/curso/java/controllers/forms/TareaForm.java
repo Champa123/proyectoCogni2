@@ -11,7 +11,7 @@ public class TareaForm {
 	@GeneratedValue
 	private Long id;
 	private String titulo;
-	private int horas;
+	private Long horas;
 	
 	
 	public Long getId() {
@@ -55,10 +55,10 @@ public class TareaForm {
 			return false;
 		return true;
 	}
-	public int getHoras() {
+	public Long getHoras() {
 		return horas;
 	}
-	public void setHoras(int horas) {
+	public void setHoras(Long horas) {
 		this.horas = horas;
 	}
 

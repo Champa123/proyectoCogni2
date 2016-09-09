@@ -18,16 +18,16 @@ public class Proyecto {
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	@OneToMany
 	private List<Tarea> tareas = new ArrayList<>();
-	private Date fechaInicio;
-	private Date fechaFin;
-	private int horasAsignadas;
-	private int sumaHorasTareas;
+	private Date fechaInicio = new Date();
+	private Date fechaFin = new Date();
+	private Long horasAsignadas;
+	private Long sumaHorasTareas;
 	
-	public void sumarHoras(int horas) {
+	public void sumarHoras(Long horas) {
 		this.setSumaHorasTareas(this.getSumaHorasTareas() + horas);
 	}
 	
-	public void restarHoras(int horas) {
+	public void restarHoras(Long horas) {
 		this.setSumaHorasTareas(this.getSumaHorasTareas() - horas);
 	}
 	
@@ -95,19 +95,19 @@ public class Proyecto {
 		this.fechaFin = fechaFin;
 	}
 
-	public int getHorasAsignadas() {
+	public Long getHorasAsignadas() {
 		return horasAsignadas;
 	}
 
-	public void setHorasAsignadas(int horasAsignadas) {
+	public void setHorasAsignadas(Long horasAsignadas) {
 		this.horasAsignadas = horasAsignadas;
 	}
 
-	public int getSumaHorasTareas() {
+	public Long getSumaHorasTareas() {
 		return sumaHorasTareas;
 	}
 
-	public void setSumaHorasTareas(int sumaHorasTareas) {
+	public void setSumaHorasTareas(Long sumaHorasTareas) {
 		this.sumaHorasTareas = sumaHorasTareas;
 	}
 	

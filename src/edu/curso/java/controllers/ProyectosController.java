@@ -83,7 +83,6 @@ public class ProyectosController {
 	public String editarProyecto(@RequestParam Long id, Model model) {
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(id);
 		Usuario usuarioPpal = proyecto.getUsuarioPrincipal();
-		Integer contador= 0;
 		List<Usuario> usuarios = new ArrayList<>();
 		usuarios= proyecto.getUsuarios();
 		List<Long> idUsuarios = proyecto.getUsuarios().stream().map((Usuario u) -> u.getId()).collect(Collectors.toList());
@@ -130,7 +129,7 @@ public class ProyectosController {
 		proyecto.setFechaInicio(proyectoForm.getFechaInicio());
 		proyecto.setFechaFin(proyectoForm.getFechaFin());
 		proyecto.setHorasAsignadas(proyectoForm.getHorasAsignadas());
-		proyecto.setSumaHorasTareas(0);
+		proyecto.setSumaHorasTareas(proyectoForm.getSumaHorasTareas());
 		
 		idActual = proyectoService.guardarProyecto(proyecto, idUsuarioPrincipal, idUsuarios);
 		

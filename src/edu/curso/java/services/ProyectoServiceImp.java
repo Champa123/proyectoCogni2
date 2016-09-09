@@ -96,6 +96,7 @@ public class ProyectoServiceImp implements ProyectoService {
 		
 //		TODO agregar exception
 		proyecto.sumarHoras(tarea.getHoras());
+//		proyecto.setSumaHorasTareas( proyecto.getSumaHorasTareas() + tarea.getHoras() );
 		proyecto.getTareas().add(tarea);
 		
 		proyectoDAO.editarProyecto(proyecto);
