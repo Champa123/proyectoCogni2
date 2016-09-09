@@ -21,11 +21,13 @@
            		<tr>
            		<th>Id</th>
            		<th>Titulo</th>
+           		<th>Estado</th>
            		
            		</tr>
            		<tr>
            			<td>${tarea.id}</td>
            			<td>${tarea.titulo}</td>
+           			<td>${tarea.estado}</td>
            		</tr>
            </table>
         </div>

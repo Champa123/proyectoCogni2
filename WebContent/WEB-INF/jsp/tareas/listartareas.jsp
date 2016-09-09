@@ -15,6 +15,7 @@
 	<tr>
 		<th>Id</th>
 		<th>Titulo</th>
+		<th>Estado</th>
 		<th></th>
 	
 
@@ -23,6 +24,7 @@
 		<tr>
 			<td>${t.id}</td>
 			<td>${t.titulo}</td>
+			<td>${t.estado}</td>
 			<td align="center">
 			<a href="nuevocomentario.html?id=${t.id}" 
 					class="btn btn-success">Agregar Comentario</a>
