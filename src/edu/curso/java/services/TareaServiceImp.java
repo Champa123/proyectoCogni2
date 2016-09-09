@@ -56,7 +56,15 @@ public class TareaServiceImp implements TareaService {
 		return tareas;
 	}
 
-
+/*	@Override
+	public Long guardarComentarioTarea(Comentario comentario, Long idTarea){
+		Tarea tarea = tareaDAO.recuperarTareaPorId(idTarea);
+		tarea.getComentarios().add(comentario);
+		TareaDAO.editarTarea(tarea);
+		Long idActual=comentarioDAO.guardarComentario(comentario);
+		
+		return idActual;
+	}*/
 	
 	
 }

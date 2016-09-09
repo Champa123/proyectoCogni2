@@ -69,7 +69,7 @@ public class TareaController {
 		Tarea tarea = tareaService.recuperarTareaPorId(id);
 		TareaForm tareaForm = new TareaForm();
 		tareaForm.setId(tarea.getId());
-		
+//		tareaForm.getComentarios(tarea.getComentarios);
 		tareaForm.setTitulo(tarea.getTitulo());
 		model.addAttribute("tareaForm", tareaForm);
 		model.addAttribute("tarea",tarea);
@@ -83,6 +83,7 @@ public class TareaController {
 		Long idActual = tareaForm.getId();
 			tarea = new Tarea();
 			tarea.setTitulo(tareaForm.getTitulo());
+			//tarea.getComentarios(tareaForm.getComentarios())
 			tarea.setId(idActual);
 			proyectoService.guardarTareaProyecto(tarea, id);
 		
@@ -96,10 +97,15 @@ public class TareaController {
 		
 		
 			tarea.setTitulo(tareaForm.getTitulo());
-			
+			//tarea.getComentarios(tareaForm.getComentarios());
 			tareaService.editarTarea(tarea);
 		
 		
 		return "redirect:/proyectos/index.html";
 }
+	
+	@RequestMapping(value = "/guardarnuevocomentario", method = RequestMethod.GET)
+	public String guardarNuevaTarea(@RequestParam Long id, Model model) {
+		return "redirect:/comentarios/nuevocomentario.html?id="+id;
+	}
 	}

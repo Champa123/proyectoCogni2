@@ -19,6 +19,6 @@ public interface TareaService {
 	
 	List<Tarea> listarTareas();
 	
-
+	//public Long guardarComentarioTarea(Comentario comentario, Long idTarea);
 
 }
