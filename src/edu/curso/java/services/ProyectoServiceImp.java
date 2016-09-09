@@ -15,7 +15,7 @@ import edu.curso.java.dao.TareaDAO;
 import edu.curso.java.dao.UsuarioDAO;
 
 @Service
-@Transactional
+@Transactional(rollbackFor=Exception.class)
 public class ProyectoServiceImp implements ProyectoService {
 
 	@Autowired
