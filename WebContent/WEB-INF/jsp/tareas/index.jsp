@@ -8,9 +8,7 @@
 
 <div class='page-header'>
   <div class='btn-toolbar pull-right'>
-<!--     <div class='btn-group'> -->
-<!--       <a href="nuevousuario.html" class="btn btn-default">+</a> -->
-<!--     </div> -->
+
   </div>
   <h2>Listado de tareas</h2>
 </div>
