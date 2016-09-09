@@ -22,6 +22,8 @@ public class ProyectoForm {
 	private Date fechaInicio = new Date();
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaFin = new Date();
+	private int horasAsignadas;
+	private int sumaHorasTareas;
 	
 	public Long getIdUsuarioPrincipal() {
 		return idUsuarioPrincipal;
@@ -115,6 +117,30 @@ public class ProyectoForm {
 
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+
+
+
+	public int getHorasAsignadas() {
+		return horasAsignadas;
+	}
+
+
+
+	public void setHorasAsignadas(int horasAsignadas) {
+		this.horasAsignadas = horasAsignadas;
+	}
+
+
+
+	public int getSumaHorasTareas() {
+		return sumaHorasTareas;
+	}
+
+
+
+	public void setSumaHorasTareas(int sumaHorasTareas) {
+		this.sumaHorasTareas = sumaHorasTareas;
 	}
 	
 	

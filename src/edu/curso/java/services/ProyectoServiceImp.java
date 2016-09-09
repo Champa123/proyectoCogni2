@@ -93,7 +93,11 @@ public class ProyectoServiceImp implements ProyectoService {
 	@Override
 	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto){
 		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
+		
+//		TODO agregar exception
+		proyecto.sumarHoras(tarea.getHoras());
 		proyecto.getTareas().add(tarea);
+		
 		proyectoDAO.editarProyecto(proyecto);
 		Long idActual=tareaDAO.guardarTarea(tarea);
 		

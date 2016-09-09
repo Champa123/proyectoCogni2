@@ -20,7 +20,16 @@ public class Proyecto {
 	private List<Tarea> tareas = new ArrayList<>();
 	private Date fechaInicio;
 	private Date fechaFin;
-	private int horas;
+	private int horasAsignadas;
+	private int sumaHorasTareas;
+	
+	public void sumarHoras(int horas) {
+		this.setSumaHorasTareas(this.getSumaHorasTareas() + horas);
+	}
+	
+	public void restarHoras(int horas) {
+		this.setSumaHorasTareas(this.getSumaHorasTareas() - horas);
+	}
 	
 	public List<Usuario> getUsuarios() {
 		return usuarios;
@@ -84,6 +93,22 @@ public class Proyecto {
 
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+
+	public int getHorasAsignadas() {
+		return horasAsignadas;
+	}
+
+	public void setHorasAsignadas(int horasAsignadas) {
+		this.horasAsignadas = horasAsignadas;
+	}
+
+	public int getSumaHorasTareas() {
+		return sumaHorasTareas;
+	}
+
+	public void setSumaHorasTareas(int sumaHorasTareas) {
+		this.sumaHorasTareas = sumaHorasTareas;
 	}
 	
 }

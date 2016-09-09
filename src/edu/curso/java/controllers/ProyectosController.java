@@ -95,6 +95,8 @@ public class ProyectosController {
 		proyectoForm.setIdUsuarios(idUsuarios);
 		proyectoForm.setFechaInicio(proyecto.getFechaInicio());
 		proyectoForm.setFechaFin(proyecto.getFechaFin());
+		proyectoForm.setHorasAsignadas(proyecto.getHorasAsignadas());
+		proyectoForm.setSumaHorasTareas(proyecto.getSumaHorasTareas());
 		model.addAttribute("proyectoForm", proyectoForm);
 		model.addAttribute("proyecto",proyecto);
 		model.addAttribute("usuarios", usuarioService.recuperarUsuarios());
@@ -127,6 +129,8 @@ public class ProyectosController {
 		proyecto.setDescripcion(proyectoForm.getDescripcion());
 		proyecto.setFechaInicio(proyectoForm.getFechaInicio());
 		proyecto.setFechaFin(proyectoForm.getFechaFin());
+		proyecto.setHorasAsignadas(proyectoForm.getHorasAsignadas());
+		proyecto.setSumaHorasTareas(0);
 		
 		idActual = proyectoService.guardarProyecto(proyecto, idUsuarioPrincipal, idUsuarios);
 		
@@ -172,6 +176,8 @@ public class ProyectosController {
 			proyecto.setId(idActual);
 			proyecto.setFechaInicio(proyectoForm.getFechaInicio());
 			proyecto.setFechaFin(proyectoForm.getFechaFin());
+			proyecto.setHorasAsignadas(proyectoForm.getHorasAsignadas());
+			proyecto.setSumaHorasTareas(proyectoForm.getSumaHorasTareas());
 			
 			idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
 		} 

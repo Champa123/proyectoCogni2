@@ -13,4 +13,5 @@ hs_err_pid*
 
 applicationContext.xml
 *.properties
-/target/
+target/classes/application.properties
+src/application.properties
