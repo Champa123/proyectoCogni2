@@ -11,7 +11,7 @@ public class Tarea {
 	@GeneratedValue
 	private Long id;
 	private String titulo;
-	
+	private String estado;
 	
 	public Long getId() {
 		return id;
@@ -53,6 +53,12 @@ public class Tarea {
 		} else if (!titulo.equals(other.titulo))
 			return false;
 		return true;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	

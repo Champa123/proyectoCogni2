@@ -26,10 +26,7 @@ $(document).ready(function(){
 	
 	$("#divResultado").delegate(".vertareas", "click", function(){
 		var id = $(this).data("id-proyecto");
-		$.get("listartareas.html?id=" + id, function(resp){
-			$("#divTareas").html(resp);
-			
-		});
+		 mostrarTareas(id)
 	});
 	
 	$("#divResultado").delegate(".btn-modal", "click", function(){
@@ -51,8 +48,8 @@ $(document).ready(function(){
 		
 	});
 
-function mostrarTareas(){
-	$.get("listartareas.html", function(r){
+function mostrarTareas(id){
+	$.get("listartareas.html?id="+id, function(r){
 		$("#divTareas").html(r)
 	})
 }
@@ -80,40 +77,5 @@ function hacerBusqueda (){
 <div id="divTareas"></div>
 <div class="modal fade" id="myModalProyecto" role="dialog"></div>
 <div class="modal fade" id="myModalTarea" role="dialog"></div>
-
-<!-- <table class="table table-striped table-bordered table-hover"> -->
-<!-- 	<tr> -->
-<!-- 		<th>Id</th> -->
-<!-- 		<th>Nombre</th> -->
-<!-- 		<th>Descripcion</th> -->
-		
-<!-- 		<th></th> -->
-<!-- 	</tr> -->
-<%-- 	<c:forEach items="${proyectos}" var="p"> --%>
-<!-- 		<tr> -->
-<%-- 			<td>${p.id}</td> --%>
-<%-- 			<td>${p.nombre}</td> --%>
-<%-- 			<td>${p.descripcion}</td> --%>
-<!-- 			<td> -->
-<%-- 				<c:if test="${not empty p.usuarioPrincipal}"> --%>
-<%-- 					${p.usuarioPrincipal.nombreCompleto}</c:if> --%>
-<!-- 			</td> -->
-<!-- 			<td> -->
-  			
-<%-- 				<a href="verproyecto.html?id=${p.id}"  --%>
-<!-- 					class="btn btn-primary">Ver</a> -->
-				
-<%-- 				<a href="editarproyecto.html?id=${p.id}"  --%>
-<!-- 					class="btn btn-success">Editar</a> -->
-				
-<%-- 				<a href="borrarproyecto.html?id=${p.id}"  --%>
-<!-- 					class="btn btn-danger">Borrar</a> -->
-					
-					
-<!-- 			</td> -->
-<!-- 		</tr> -->
-<%-- 	</c:forEach> --%>
-<!-- </table> -->
-
 
 <c:import url="/general/template_bottom.jsp" />

@@ -15,6 +15,7 @@
 	<tr>
 		<th>Id</th>
 		<th>Titulo</th>
+		<th></th>
 	
 
 	</tr>
@@ -22,6 +23,12 @@
 		<tr>
 			<td>${t.id}</td>
 			<td>${t.titulo}</td>
+			<td align="center">
+			<a href="nuevocomentario.html?id=${t.id}" 
+					class="btn btn-success">Agregar Comentario</a>
+			<a href="listarcomentarios.html?id=${t.id}" 
+					class="btn btn-warning">Ver Comentarios</a>
+			</td>
 	
 		</tr>
 	</c:forEach>

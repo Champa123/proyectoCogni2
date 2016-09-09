@@ -70,6 +70,7 @@ public class TareaController {
 		TareaForm tareaForm = new TareaForm();
 		tareaForm.setId(tarea.getId());
 //		tareaForm.getComentarios(tarea.getComentarios);
+		tareaForm.setEstado(tarea.getEstado());
 		tareaForm.setTitulo(tarea.getTitulo());
 		model.addAttribute("tareaForm", tareaForm);
 		model.addAttribute("tarea",tarea);
@@ -84,6 +85,7 @@ public class TareaController {
 			tarea = new Tarea();
 			tarea.setTitulo(tareaForm.getTitulo());
 			//tarea.getComentarios(tareaForm.getComentarios())
+			tarea.setEstado(tareaForm.getEstado());
 			tarea.setId(idActual);
 			proyectoService.guardarTareaProyecto(tarea, id);
 		
@@ -98,7 +100,9 @@ public class TareaController {
 		
 			tarea.setTitulo(tareaForm.getTitulo());
 			//tarea.getComentarios(tareaForm.getComentarios());
+			tarea.setEstado(tareaForm.getEstado());
 			tareaService.editarTarea(tarea);
+			
 		
 		
 		return "redirect:/proyectos/index.html";

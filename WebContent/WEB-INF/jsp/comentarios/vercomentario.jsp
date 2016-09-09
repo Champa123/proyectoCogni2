@@ -6,23 +6,21 @@
 <table class="table table-striped table-bordered table-hover">
 	<tr>
 		<th>Id</th>
-		<th>Titulo</th>
-		<th>Estado</th>
+		<th>Comentario</th>
 		<th></th>
 
 	</tr>
-	<c:forEach items="${tareas}" var="t">
+	<c:forEach items="${comentario}" var="c">
 		<tr>
-			<td>${t.id}</td>
-			<td>${t.titulo}</td>
-			<td>${t.estado}</td>
+			<td>${c.id}</td>
+			<td>${c.comentario}</td>
 			<td align="center">
    
    
 				<button type="button" class="btn btn-primary btn-modal-tarea" data-toggle="modal" 
-				data-id-tarea="${t.id}">Ver</button>
+				data-id-tarea="${c.id}">Ver</button>
 				
-				<a href="/trackandbug/tareas/editartarea.html?id=${t.id}" 
+				<a href="/trackandbug/tareas/editartarea.html?id=${c.id}" 
 					class="btn btn-success">Editar</a>
 				
 					
