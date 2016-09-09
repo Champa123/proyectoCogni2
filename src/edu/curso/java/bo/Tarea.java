@@ -1,8 +1,11 @@
 package edu.curso.java.bo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Tarea {
@@ -11,6 +14,10 @@ public class Tarea {
 	@GeneratedValue
 	private Long id;
 	private String titulo;
+	
+	@OneToMany
+	private List<Comentario> comentarios;
+	
 	
 	
 	public Long getId() {
