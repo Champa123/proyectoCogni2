@@ -24,7 +24,11 @@ public class Proyecto {
 	private Long sumaHorasTareas;
 	
 	public void sumarHoras(Long horas) {
-		this.setSumaHorasTareas(this.getSumaHorasTareas() + horas);
+		if ( this.getSumaHorasTareas() + horas <= this.getHorasAsignadas() ) {
+			this.setSumaHorasTareas(this.getSumaHorasTareas() + horas);
+		} else {
+			throw new ArithmeticException("no hay horas disponibles");
+		}
 	}
 	
 	public void restarHoras(Long horas) {
