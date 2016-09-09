@@ -13,6 +13,7 @@ import edu.curso.java.controllers.autocomplete.ItemAutoComplete;
 import edu.curso.java.dao.ProyectoDAO;
 import edu.curso.java.dao.TareaDAO;
 import edu.curso.java.dao.UsuarioDAO;
+import edu.curso.java.exceptions.HorasInsuficientesException;
 
 @Service
 @Transactional(rollbackFor=Exception.class)
@@ -94,15 +95,21 @@ public class ProyectoServiceImp implements ProyectoService {
 	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto){
 		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
 		
-//		TODO agregar exception
-		proyecto.sumarHoras(tarea.getHoras());
+//		TODO poner el try catch en el controller
+		try {
+			proyecto.sumarHoras(tarea.getHoras());
 //		proyecto.setSumaHorasTareas( proyecto.getSumaHorasTareas() + tarea.getHoras() );
-		proyecto.getTareas().add(tarea);
-		
-		proyectoDAO.editarProyecto(proyecto);
-		Long idActual=tareaDAO.guardarTarea(tarea);
-		
-		return idActual;
+			proyecto.getTareas().add(tarea);
+			
+			proyectoDAO.editarProyecto(proyecto);
+			Long idActual=tareaDAO.guardarTarea(tarea);
+			return idActual;
+			
+		} catch (HorasInsuficientesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	@Override
 	public void guardarEdicionTareaProyecto(Tarea tarea, Long idProyecto){

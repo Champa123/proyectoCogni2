@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import edu.curso.java.exceptions.HorasInsuficientesException;
+
 @Entity
 public class Proyecto {
 	
@@ -23,11 +25,11 @@ public class Proyecto {
 	private Long horasAsignadas;
 	private Long sumaHorasTareas;
 	
-	public void sumarHoras(Long horas) {
+	public void sumarHoras(Long horas) throws HorasInsuficientesException {
 		if ( this.getSumaHorasTareas() + horas <= this.getHorasAsignadas() ) {
 			this.setSumaHorasTareas(this.getSumaHorasTareas() + horas);
 		} else {
-			throw new ArithmeticException("no hay horas disponibles");
+			throw new HorasInsuficientesException("no hay horas disponibles");
 		}
 	}
 	
