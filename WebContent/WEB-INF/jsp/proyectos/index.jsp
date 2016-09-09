@@ -60,7 +60,7 @@ function hacerBusqueda (){
 		$('#divResultado').html(r);
 	});
 }	
-	
+
 </script>
 
 
@@ -72,6 +72,8 @@ function hacerBusqueda (){
 	<input type="text" id="textoBuscar" name="textoBuscar" placeholder="Buscar..." class="ui-widget">
 	<input id="btnBuscar" type="button" value="Buscar">
 </form>			
+
+<input type="button" id="btnExport" value=" Exportar tabla a Excel"/>
 
 <div id="divResultado"></div>
 <div id="divTareas"></div>

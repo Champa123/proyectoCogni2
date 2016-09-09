@@ -12,7 +12,7 @@
 		<th>Fecha de inicio</th>
 		<th>Fecha de fin</th>
 		<th>Usuario Principal</th>
-		<th></th>
+		<th class="noExl"></th>
 	</tr>
 	<c:forEach items="${proyectos}" var="p">
 		<tr id="${p.id}">
@@ -25,7 +25,7 @@
 				<c:if test="${not empty p.usuarioPrincipal}">
 					${p.usuarioPrincipal.nombreCompleto}</c:if>
 			</td>
-			<td align="center">
+			<td align="center" class="noExl">
    
    
 				<button type="button" class="btn btn-primary btn-modal" data-toggle="modal" 
