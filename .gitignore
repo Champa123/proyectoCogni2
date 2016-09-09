@@ -13,5 +13,4 @@ hs_err_pid*
 
 applicationContext.xml
 *.properties
-target/classes/application.properties
-src/application.properties
+MANIFEST.MF
