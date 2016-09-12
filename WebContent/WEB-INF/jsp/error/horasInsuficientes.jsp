@@ -5,7 +5,7 @@
 <c:import url="/general/template_top.jsp" />
 
 <div>
-	<p>Horas insuficientes</p>
+	<h2>Horas insuficientes</h2>
 </div>
 
 <c:import url="/general/template_bottom.jsp" />
