@@ -92,24 +92,16 @@ public class ProyectoServiceImp implements ProyectoService {
 		return proyectoDAO.buscarProyectoPorNombre(term);
 	}
 	@Override
-	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto){
+	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto) throws HorasInsuficientesException{
 		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
 		
-//		TODO poner el try catch en el controller
-		try {
-			proyecto.sumarHoras(tarea.getHoras());
-//		proyecto.setSumaHorasTareas( proyecto.getSumaHorasTareas() + tarea.getHoras() );
-			proyecto.getTareas().add(tarea);
-			
-			proyectoDAO.editarProyecto(proyecto);
-			Long idActual=tareaDAO.guardarTarea(tarea);
-			return idActual;
-			
-		} catch (HorasInsuficientesException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		proyecto.sumarHoras(tarea.getHoras());
+		proyecto.getTareas().add(tarea);
+		
+		proyectoDAO.editarProyecto(proyecto);
+		Long idActual=tareaDAO.guardarTarea(tarea);
+		return idActual;
+
 	}
 	@Override
 	public void guardarEdicionTareaProyecto(Tarea tarea, Long idProyecto){

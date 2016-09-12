@@ -19,6 +19,7 @@ import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.forms.ProyectoForm;
 import edu.curso.java.controllers.forms.TareaForm;
 import edu.curso.java.controllers.forms.UsuarioForm;
+import edu.curso.java.exceptions.HorasInsuficientesException;
 import edu.curso.java.services.ProyectoService;
 import edu.curso.java.services.TareaService;
 import edu.curso.java.services.UsuarioService;
@@ -88,7 +89,13 @@ public class TareaController {
 			//tarea.getComentarios(tareaForm.getComentarios())
 			tarea.setId(idActual);
 			tarea.setHoras(tareaForm.getHoras());
-			proyectoService.guardarTareaProyecto(tarea, id);
+			
+			try {
+				proyectoService.guardarTareaProyecto(tarea, id);
+			} catch (HorasInsuficientesException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 		
 		

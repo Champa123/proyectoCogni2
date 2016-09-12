@@ -6,6 +6,7 @@ import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.autocomplete.ItemAutoComplete;
+import edu.curso.java.exceptions.HorasInsuficientesException;
 
 public interface ProyectoService {
 
@@ -25,6 +26,6 @@ public interface ProyectoService {
 	public List<Proyecto> buscarProyectosPorNombre(String term);
 	Long guardarProyecto(Proyecto proyecto, Long idUsuarioPrincipal, List<Long> idUsuarios);
 	
-	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto);
+	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto) throws HorasInsuficientesException;
 	public void guardarEdicionTareaProyecto(Tarea tarea, Long idProyecto);
 }
