@@ -1,8 +1,16 @@
 package edu.curso.java.bo;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import edu.curso.java.exceptions.HorasInsuficientesException;
 
@@ -18,6 +26,7 @@ public class Proyecto {
 	private Usuario usuarioPrincipal;
 	@ManyToMany
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
+//	@OneToMany (cascade= CascadeType.ALL)// TODO
 	@OneToMany
 	private List<Tarea> tareas = new ArrayList<>();
 	private Date fechaInicio = new Date();
