@@ -1,5 +1,6 @@
 package edu.curso.java.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import edu.curso.java.bo.Proyecto;
@@ -20,5 +21,6 @@ public interface ProyectoDAO {
 	
 	void editarProyecto(Proyecto proyecto);
 	
-	List<Proyecto> buscarProyectoPorNombre(String term);
+	List<Proyecto> buscarProyectos(String textoBuscar, Date fechaIni2, Date fechaFin2);
+	List<Proyecto> buscarProyectos(String term);
 }

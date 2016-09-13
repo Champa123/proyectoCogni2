@@ -58,8 +58,10 @@ public class TareaServiceImp implements TareaService {
 		return tareas;
 	}
 
-
-	
+	@Override
+	public List<Tarea> buscarTareasPorNombre(String textoTarea) {
+		return tareaDAO.buscarTareasPorNombre(textoTarea);
+	}
 
 	@Override
 	public Long guardarComentarioTarea(Comentario comentario, Long idTarea){
@@ -69,7 +71,7 @@ public class TareaServiceImp implements TareaService {
 		Long idActual=comentarioDAO.guardarComentario(comentario);
 		
 		return idActual;
-}
+	}
 	
 	
 }

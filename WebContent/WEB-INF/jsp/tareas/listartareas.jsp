@@ -7,21 +7,36 @@
 
 
 
+<script>
 
-<h1>Listado de Tareas</h1>
-
-<br>
-<table class="table table-striped table-bordered table-hover">
-	<tr>
-		<th>Id</th>
-		<th>Titulo</th>
-
-		<th>Horas</th>
+$(document).ready(function(){
 	
+	buscarTarea();
 
-		<th>Estado</th>
-		<th></th>
+$('#textoTarea').keypress(function(event){
+	var keycode = (event.keyCode ? event.keyCode : event.which);
+	if(keycode == '13'){
+		event.preventDefault();
+		buscarTarea();
+		return false;
+	}
+	
+});
 
+
+$('#btnTarea').click(function(){
+	buscarTarea();
+});
+
+
+function buscarTarea (){
+	var datos = $('#buscadorTarea').serialize();
+	$.get('buscadortareas.html', datos, function(r){
+		$('#divResult').html(r);
+	});
+}	
+})
+</script>
 
 	</tr>
 	<c:forEach items="${tareas}" var="tarea">
@@ -70,13 +85,23 @@
            		</tr>
            		</c:if>
 
-		
+<h1>Listado de Tareas</h1>
 
+<form class="form-inline" id="buscadorTarea" method="get" action="buscadortareas.html?textoBuscar=">
+	<input class="form-control" type="text" id="textoTarea" name="textoTarea" placeholder="Buscar..." class="ui-widget">
+	<button type="button" class="btn btn-default" id="btnTarea" type="button">Buscar</button>
+</form>
+<br>
 
+<div id="divResult"></div>
+
+<<<<<<< HEAD
 		
 	</c:forEach>
 	
 </table>
+=======
+>>>>>>> 8cdad033ee265344a59608669c3cf6fdcf72d336
 
 
 <c:import url="/general/template_bottom.jsp" />

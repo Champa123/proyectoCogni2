@@ -50,7 +50,11 @@ public class TareaDAOImp implements TareaDAO {
 		return query.list();
 	}
 
-
+	@Override
+	public List<Tarea> buscarTareasPorNombre(String textoTarea) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Tarea as t where t.titulo like '%" + textoTarea + "%'");
+		return  query.list();
+	}
 	
 	
 	
