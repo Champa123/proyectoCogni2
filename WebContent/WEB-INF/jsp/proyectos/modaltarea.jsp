@@ -22,7 +22,7 @@
            		<th>Id</th>
            		<th>Titulo</th>
            		<th>Estado</th>
-           		
+
            		
            		</tr>
            		<tr>

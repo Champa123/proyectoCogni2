@@ -17,7 +17,9 @@ public class TareaForm {
 	private Long id;
 	private String titulo;
 	private String estado;
+
 	private List<Comentario> comentarios= new ArrayList<>();
+
 	
 	public Long getId() {
 		return id;
@@ -60,12 +62,14 @@ public class TareaForm {
 			return false;
 		return true;
 	}
+
 	public List<Comentario> getComentarios() {
 		return comentarios;
 	}
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
+
 	public String getEstado() {
 		return estado;
 	}

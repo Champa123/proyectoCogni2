@@ -12,18 +12,28 @@
 	<form:form method="post" modelAttribute="tareaForm" action="guardarediciontarea.html">
 		<form:input path="id" type="hidden" />
 		<div class="form-group">
-		<label for="titulo">Titulo</label>
-		<form:input class="form-control" path="titulo" type="text" />
+			<label for="titulo">Titulo</label>
+			<form:input class="form-control" path="titulo" type="text" />
 		</div>
+
 		<form:select class="form-control" path="estado">
 			<option></option>
 			<option value="Completado">Completado</option>
 			<option value="En curso">En curso</option>
 			<option value="Cancelado">Cancelado</option>
 		</form:select>
+
 		<div class="form-group">
-		<input type="submit" class="btn btn-success" value="Guardar">
-		<a href="proyectos/index.html" 
+			<label for="estado">Estado</label>
+			<form:select class="form-control" path="estado" type="select" >
+			<form:option class="form-control" value="Completado" >Completado</form:option>
+			<form:option class="form-control" value="En curso" >En curso</form:option>
+			<form:option class="form-control" value="Cancelado" >Cancelado</form:option>
+			</form:select>
+		</div>
+		<div class="form-group">
+			<input type="submit" class="btn btn-success" value="Guardar">
+			<a href="proyectos/index.html" 
 					class="btn btn-danger">Volver </a>
 		</div>
 	</form:form>

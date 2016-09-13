@@ -17,6 +17,7 @@ public class Tarea {
 	private Long id;
 	private String titulo;
 	private String estado;
+
 	@OneToMany 
 	private List<Comentario> comentarios = new ArrayList<>();
 	

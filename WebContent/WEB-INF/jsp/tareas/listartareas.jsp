@@ -24,10 +24,12 @@
 			<td>${t.id}</td>
 			<td>${t.titulo}</td>
 			<td>${t.estado}</td>
+
 			<td>
 				<a href="guardarnuevocomentario.html?id=${t.id}" 
 					class="btn btn-success">Agregar Comentario</a>
 			</td>
+
 		</tr>
 	</c:forEach>
 	

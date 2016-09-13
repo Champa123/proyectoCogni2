@@ -26,10 +26,7 @@ $(document).ready(function(){
 	
 	$("#divResultado").delegate(".vertareas", "click", function(){
 		var id = $(this).data("id-proyecto");
-		$.get("listartareas.html?id=" + id, function(resp){
-			$("#divTareas").html(resp);
-			
-		});
+		 mostrarTareas(id)
 	});
 	
 	$("#divResultado").delegate(".btn-modal", "click", function(){
@@ -51,8 +48,8 @@ $(document).ready(function(){
 		
 	});
 
-function mostrarTareas(){
-	$.get("listartareas.html", function(r){
+function mostrarTareas(id){
+	$.get("listartareas.html?id="+id, function(r){
 		$("#divTareas").html(r)
 	})
 }
@@ -80,7 +77,6 @@ function hacerBusqueda (){
 <div id="divTareas"></div>
 <div class="modal fade" id="myModalProyecto" role="dialog"></div>
 <div class="modal fade" id="myModalTarea" role="dialog"></div>
-
 
 
 <c:import url="/general/template_bottom.jsp" />

@@ -23,6 +23,16 @@
 		<option value="Cancelado">Cancelado</option>
 		</form:select>
 		</div>
+
+		<div class="form-group">
+			<label for="estado">Estado</label>
+			<form:select class="form-control" path="estado" type="select" >
+			<form:option class="form-control" value="Completado" >Completado</form:option>
+			<form:option class="form-control" value="En curso" >En curso</form:option>
+			<form:option class="form-control" value="Cancelado" >Cancelado</form:option>
+			</form:select>
+		</div>
+
 		<div class="form-group">
 		<input type="submit" class="btn btn-success" value="Guardar">
 		<a href="guardarnuevatarea.html?id=${ID}" 
