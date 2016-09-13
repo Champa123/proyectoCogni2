@@ -1,8 +1,13 @@
 package edu.curso.java.controllers.forms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import edu.curso.java.bo.Comentario;
 
 @Entity
 public class TareaForm {
@@ -11,8 +16,15 @@ public class TareaForm {
 	@GeneratedValue
 	private Long id;
 	private String titulo;
+
 	private Long horas;
 	
+
+	private String estado;
+
+	private List<Comentario> comentarios= new ArrayList<>();
+
+
 	
 	public Long getId() {
 		return id;
@@ -60,6 +72,20 @@ public class TareaForm {
 	}
 	public void setHoras(Long horas) {
 		this.horas = horas;
+	}
+
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	

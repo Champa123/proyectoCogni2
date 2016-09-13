@@ -14,26 +14,23 @@
 		<div class="form-group">
 		<label for="titulo">Titulo</label>
 		<form:input class="form-control" path="titulo" type="text" />
+		</div><div class="form-group">
+		<label for="estado">Estado</label>
+		<div class="form-group">
+			<label for="estado">Estado</label>
+			<form:select class="form-control" path="estado" type="select" >
+			<form:option class="form-control" value="Completado" >Completado</form:option>
+			<form:option class="form-control" value="En curso" >En curso</form:option>
+			<form:option class="form-control" value="Cancelado" >Cancelado</form:option>
+			</form:select>
 		</div>
+		</div>
+
 		<div class="form-group">
 			<label for="horas">Horas</label>
 			<form:input class="form-control" path="horas" type="number" />
 		</div>
-<!-- 		<div class="form-group"> -->
-<!-- 		<label for="descripcion">Descripcion</label> -->
-<%-- 		<form:textarea class="form-control" path="descripcion" /> --%>
-<!-- 		</div> -->
-<!-- 		<div class="form-group"> -->
-<!-- 		<label for="idUsuarioPrincipal">Usuario Principal</label> -->
-<%-- 		<form:select path="idUsuarioPrincipal" id="select-single" class="js-example-basic-single js-states form-control" items="${usuarios}" itemLabel="nombreCompleto" itemValue="id"> --%>
-<%-- 		</form:select> --%>
-<!-- 		</div> -->
-<!-- 		<div class="form-group"> -->
-<!-- 		<label for="idUsuarios">Usuarios </label> -->
-<%-- 		<form:select id="select-multiple" class="js-example-basic-multiple js-states form-control" multiple="multiple" path="idUsuarios" items="${usuarios}" itemLabel="nombreCompleto" itemValue="id"> --%>
-<%-- 		</form:select> --%>
-<!-- 		</div> -->
-<!-- 		<br> -->
+
 		<div class="form-group">
 		<input type="submit" class="btn btn-success" value="Guardar">
 		<a href="guardarnuevatarea.html?id=${ID}" 

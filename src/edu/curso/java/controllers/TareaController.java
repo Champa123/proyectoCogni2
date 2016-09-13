@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
@@ -71,6 +72,9 @@ public class TareaController {
 		TareaForm tareaForm = new TareaForm();
 		
 		tareaForm.setId(tarea.getId());
+
+//		tareaForm.getComentarios(tarea.getComentarios);
+		tareaForm.setEstado(tarea.getEstado());
 		tareaForm.setTitulo(tarea.getTitulo());
 		tareaForm.setHoras(tarea.getHoras());
 		
@@ -86,12 +90,11 @@ public class TareaController {
 		Long idActual = tareaForm.getId();
 		tarea = new Tarea();
 		tarea.setTitulo(tareaForm.getTitulo());
-		//tarea.getComentarios(tareaForm.getComentarios())
 		tarea.setId(idActual);
 		tarea.setHoras(tareaForm.getHoras());
-		
+		tarea.setEstado(tareaForm.getEstado());
+		tarea.getComentarios();
 		String returnPage = "redirect:/proyectos/index.html"; 
-		
 		try {
 			proyectoService.guardarTareaProyecto(tarea, id);
 		} catch (HorasInsuficientesException e) {
@@ -104,14 +107,10 @@ public class TareaController {
 	@RequestMapping(value = "/guardarediciontarea", method = RequestMethod.POST)
 	public String guardarEdicionTarea(@RequestParam Long id ,@ModelAttribute("tareaForm") TareaForm tareaForm, Model model) {
 		Tarea tarea = tareaService.recuperarTareaPorId(id);
-		
-		
 			tarea.setTitulo(tareaForm.getTitulo());
 			tarea.setHoras(tareaForm.getHoras());
-			
+			tarea.setEstado(tareaForm.getEstado());
 			tareaService.editarTarea(tarea);
-		
-		
 		return "redirect:/proyectos/index.html";
 }
 	

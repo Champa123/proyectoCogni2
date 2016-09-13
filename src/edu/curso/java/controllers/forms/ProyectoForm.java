@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 
@@ -24,6 +25,7 @@ public class ProyectoForm {
 	private Date fechaFin = new Date();
 	private Long horasAsignadas;
 	private Long sumaHorasTareas = new Long(0);//TODO esto creo que no hace falta
+	
 	
 	public Long getIdUsuarioPrincipal() {
 		return idUsuarioPrincipal;
@@ -121,6 +123,7 @@ public class ProyectoForm {
 
 
 
+
 	public Long getHorasAsignadas() {
 		return horasAsignadas;
 	}
@@ -142,6 +145,7 @@ public class ProyectoForm {
 	public void setSumaHorasTareas(Long sumaHorasTareas) {
 		this.sumaHorasTareas = sumaHorasTareas;
 	}
+
 	
 	
 

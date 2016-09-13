@@ -1,8 +1,13 @@
 package edu.curso.java.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Tarea {
@@ -11,8 +16,22 @@ public class Tarea {
 	@GeneratedValue
 	private Long id;
 	private String titulo;
+
 	private Long horas;
 	
+
+	private String estado;
+
+	@OneToMany 
+	private List<Comentario> comentarios = new ArrayList<>();
+	
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -54,12 +73,19 @@ public class Tarea {
 			return false;
 		return true;
 	}
+
 	
 	public Long getHoras() {
 		return horas;
 	}
 	public void setHoras(Long horas) {
 		this.horas = horas;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	

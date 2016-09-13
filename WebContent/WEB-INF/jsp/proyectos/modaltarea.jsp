@@ -21,12 +21,37 @@
            		<tr>
            		<th>Id</th>
            		<th>Titulo</th>
+           		<th>Estado</th>
+
            		
            		</tr>
            		<tr>
            			<td>${tarea.id}</td>
            			<td>${tarea.titulo}</td>
+           			<td>${tarea.estado}</td>
+           			
            		</tr>
+           </table>
+           <table class="table table-striped table-bordered table-hover">
+           		<tr>
+           		
+           		<th>Comentarios</th>
+           		<th></th>
+           		</tr>
+           		
+           			<c:forEach items="${tarea.comentarios}" var="c">
+           			<tr>
+           				<td>
+           					${c.comentario}
+           					
+           				</td>
+           				<td>
+           					<a href="/trackandbug/comentarios/borrarcomentario.html?idComent=${c.id}&idTarea=${tarea.id}" 
+					class="btn btn-danger">Borrar</a>
+           				</td>
+              		</tr>
+           			</c:forEach>
+
            </table>
         </div>
         <div class="modal-footer">

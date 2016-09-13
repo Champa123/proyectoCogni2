@@ -40,7 +40,7 @@ public class ProyectosController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(Model model) {
-		log.info("Listando los proyectos");
+		
 		List<Proyecto> proyectos = proyectoService.listarProyectos();
 		model.addAttribute("proyectos",proyectos);
 		return null;
@@ -48,7 +48,7 @@ public class ProyectosController {
 
 	@RequestMapping(value = "/buscadorproyectos", method = RequestMethod.POST)
 	public String buscarProyectos(@RequestParam String textoBuscar, Model model) {
-		log.info("Buscando los proyectos");
+		
 		List<Proyecto> proyectos = proyectoService.buscarProyectosPorNombre(textoBuscar);
 		model.addAttribute("proyectos",proyectos);
 		return null;
@@ -97,25 +97,14 @@ public class ProyectosController {
 		proyectoForm.setFechaFin(proyecto.getFechaFin());
 		proyectoForm.setHorasAsignadas(proyecto.getHorasAsignadas());
 		proyectoForm.setSumaHorasTareas(proyecto.getSumaHorasTareas());
+
 		model.addAttribute("proyectoForm", proyectoForm);
 		model.addAttribute("proyecto",proyecto);
 		model.addAttribute("usuarios", usuarioService.recuperarUsuarios());
 		return "/proyectos/formeditado";
 	}
 	
-//	@RequestMapping(value = "/guardarproyecto", method = RequestMethod.POST)
-//	public String guardarUsuario(@ModelAttribute("proyectoForm") ProyectoForm proyectoForm, Model model) {
-//
-//		Proyecto proyecto = new Proyecto();
-//		proyecto.setDescripcion(proyectoForm.getDescripcion());
-//		proyecto.setNombre(proyectoForm.getNombre());
-//		proyecto.setUsuarios(proyectoForm.getUsuarios());
-//		proyecto.setId(proyectoForm.getId());
-//		
-//		Long idGenerado = proyectoService.guardarProyecto(proyecto);
-//
-//		return "redirect:/proyectos/verproyecto.html?id=" + idGenerado;
-//	}
+
 	
 	@RequestMapping(value="/error/horasInsuficientes", method=RequestMethod.GET)
 	public String horasInsuficientes(Model model) {
@@ -151,28 +140,7 @@ public class ProyectosController {
 	}
 	
 	
-//	@RequestMapping(value = "/guardarproyecto", method = RequestMethod.POST)
-//	public String guardarUsuario(@ModelAttribute("proyectoForm") ProyectoForm proyectoForm, Model model) {
-//		Proyecto proyecto = null;
-//		Long idActual = proyectoForm.getId();
-//		Long idUsuarioPrincipal = proyectoForm.getIdUsuarioPrincipal();
-//		
-//		if(idActual != null){
-//			proyecto= proyectoService.recuperarProyectoPorId(idActual);
-//			proyecto.setNombre(proyectoForm.getNombre());
-//			proyecto.setDescripcion(proyecto.getDescripcion());
-//			idActual = proyectoService.guardarProyecto(proyecto,idUsuarioPrincipal);
-//		} else {
-//			proyecto = new Proyecto();
-//			proyecto.setNombre(proyectoForm.getNombre());
-//			proyecto.setDescripcion(proyecto.getDescripcion());
-//			idActual = proyectoService.guardarProyecto(proyecto, idUsuarioPrincipal);
-//		}
-//		
-//		
-//		
-//		return null;
-//}
+
 	@RequestMapping(value = "/guardareditproyecto", method = RequestMethod.POST)
 	public String guardareditproyecto(@ModelAttribute("proyectoForm") ProyectoForm proyectoForm, Model model) {
 		

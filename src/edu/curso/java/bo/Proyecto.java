@@ -46,6 +46,7 @@ public class Proyecto {
 		tareas.add(tarea);
 	}
 	
+	
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
@@ -117,6 +118,7 @@ public class Proyecto {
 		this.fechaFin = fechaFin;
 	}
 
+
 	public Long getHorasAsignadas() {
 		return horasAsignadas;
 	}
@@ -134,5 +136,6 @@ public class Proyecto {
 		this.sumaHorasTareas = sumaHorasTareas;
 		validarHoras();
 	}
+
 	
 }
