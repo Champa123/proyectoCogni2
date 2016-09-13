@@ -15,16 +15,22 @@
 	<tr>
 		<th>Id</th>
 		<th>Titulo</th>
-	
+		<th>Estado</th>
+		<th></th>
 
 	</tr>
 	<c:forEach items="${tareas}" var="t">
 		<tr>
 			<td>${t.id}</td>
 			<td>${t.titulo}</td>
-	
+			<td>${t.estado}</td>
+			<td>
+				<a href="guardarnuevocomentario.html?id=${t.id}" 
+					class="btn btn-success">Agregar Comentario</a>
+			</td>
 		</tr>
 	</c:forEach>
+	
 </table>
 
 

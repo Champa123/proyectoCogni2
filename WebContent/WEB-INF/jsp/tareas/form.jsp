@@ -14,22 +14,15 @@
 		<div class="form-group">
 		<label for="titulo">Titulo</label>
 		<form:input class="form-control" path="titulo" type="text" />
+		</div><div class="form-group">
+		<label for="estado">Estado</label>
+		<form:select class="form-control" path="estado">
+		<option></option>
+		<option value="Completado">Completado</option>
+		<option value="En curso">En curso</option>
+		<option value="Cancelado">Cancelado</option>
+		</form:select>
 		</div>
-<!-- 		<div class="form-group"> -->
-<!-- 		<label for="descripcion">Descripcion</label> -->
-<%-- 		<form:textarea class="form-control" path="descripcion" /> --%>
-<!-- 		</div> -->
-<!-- 		<div class="form-group"> -->
-<!-- 		<label for="idUsuarioPrincipal">Usuario Principal</label> -->
-<%-- 		<form:select path="idUsuarioPrincipal" id="select-single" class="js-example-basic-single js-states form-control" items="${usuarios}" itemLabel="nombreCompleto" itemValue="id"> --%>
-<%-- 		</form:select> --%>
-<!-- 		</div> -->
-<!-- 		<div class="form-group"> -->
-<!-- 		<label for="idUsuarios">Usuarios </label> -->
-<%-- 		<form:select id="select-multiple" class="js-example-basic-multiple js-states form-control" multiple="multiple" path="idUsuarios" items="${usuarios}" itemLabel="nombreCompleto" itemValue="id"> --%>
-<%-- 		</form:select> --%>
-<!-- 		</div> -->
-<!-- 		<br> -->
 		<div class="form-group">
 		<input type="submit" class="btn btn-success" value="Guardar">
 		<a href="guardarnuevatarea.html?id=${ID}" 

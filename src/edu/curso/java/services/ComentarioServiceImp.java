@@ -18,58 +18,38 @@ import edu.curso.java.dao.UsuarioDAO;
 
 @Service
 @Transactional
-public class TareaServiceImp implements TareaService {
+public class ComentarioServiceImp implements ComentarioService {
 
-	@Autowired
-	TareaDAO tareaDAO;
 	@Autowired
 	ComentarioDAO comentarioDAO;
-	
+	@Autowired
+	TareaDAO tareaDAO;
 
 	@Override
-	public Long guardarTarea(Tarea tarea) {
-		return tareaDAO.guardarTarea(tarea);
-
-	}
-
-	
-	@Override
-	public Tarea recuperarTareaPorId(Long id) {
-		return tareaDAO.recuperarTareaPorId(id);
-	}
-
-	
-	@Override
-	public void borrarTareaPorId(Long id) {
-		tareaDAO.borrarTareaPorId(id);
-			
-	}
-
-	@Override
-	public void editarTarea(Tarea tarea) {
-		tareaDAO.editarTarea(tarea);
+	public Long guardarComentario(Comentario comentario) {
 		
+		return comentarioDAO.guardarComentario(comentario);
 	}
-
 
 	@Override
-	public List<Tarea> listarTareas() {
-		List<Tarea> tareas = tareaDAO.listarTareas();
-		return tareas;
+	public List<Comentario> listarComentarios() {
+		
+		return comentarioDAO.listarComentarios();
 	}
 
-
+	@Override
+	public Comentario recuperarComentarioPorId(Long id) {
+		
+		return comentarioDAO.recuperarComentarioPorId(id);
+	}
 	
-
 	@Override
-	public Long guardarComentarioTarea(Comentario comentario, Long idTarea){
+	public void borrarComentario(Long idComentario, Long idTarea) {
+		Comentario comentario = comentarioDAO.recuperarComentarioPorId(idComentario);
 		Tarea tarea = tareaDAO.recuperarTareaPorId(idTarea);
-		tarea.getComentarios().add(comentario);
+		tarea.getComentarios().remove(comentario);
 		tareaDAO.editarTarea(tarea);
-		Long idActual=comentarioDAO.guardarComentario(comentario);
-		
-		return idActual;
-}
-	
+		comentarioDAO.borrarComentario(comentario.getId());
+	}
 	
 }

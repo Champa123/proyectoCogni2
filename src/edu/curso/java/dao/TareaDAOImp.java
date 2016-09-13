@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
@@ -48,6 +49,7 @@ public class TareaDAOImp implements TareaDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		return query.list();
 	}
+
 
 	
 	

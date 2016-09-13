@@ -21,6 +21,7 @@ public class Proyecto {
 	private Date fechaInicio;
 	private Date fechaFin;
 	
+	
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
@@ -84,6 +85,7 @@ public class Proyecto {
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+
 	
 	
 	

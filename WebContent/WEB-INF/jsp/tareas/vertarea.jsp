@@ -7,13 +7,15 @@
 	<tr>
 		<th>Id</th>
 		<th>Titulo</th>
+		<th>Estado</th>
 		<th></th>
 
 	</tr>
-	<c:forEach items="${tarea}" var="t">
+	<c:forEach items="${tareas}" var="t">
 		<tr>
 			<td>${t.id}</td>
 			<td>${t.titulo}</td>
+			<td>${t.estado}</td>
 			<td align="center">
    
    

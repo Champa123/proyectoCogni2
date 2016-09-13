@@ -4,26 +4,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:import url="/general/template_top.jsp" />
-
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<br>
-<br>
-<br>
-	<form:form method="post" modelAttribute="tareaForm" action="guardarediciontarea.html">
+
+
+	<form:form method="post" modelAttribute="comentarioForm" action="guardarnuevocomentario.html?id=${id}">
 		<form:input path="id" type="hidden" />
 		<div class="form-group">
-		<label for="titulo">Titulo</label>
-		<form:input class="form-control" path="titulo" type="text" />
+		<label for="comentario">Comentario</label>
+		<form:textarea class="form-control required" path="comentario" type="text" />
 		</div>
-		<form:select class="form-control" path="estado">
-			<option></option>
-			<option value="Completado">Completado</option>
-			<option value="En curso">En curso</option>
-			<option value="Cancelado">Cancelado</option>
-		</form:select>
+		
 		<div class="form-group">
 		<input type="submit" class="btn btn-success" value="Guardar">
-		<a href="proyectos/index.html" 
+		<a href="index.html" 
 					class="btn btn-danger">Volver </a>
 		</div>
 	</form:form>

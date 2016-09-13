@@ -2,10 +2,9 @@ package edu.curso.java.services;
 
 import java.util.List;
 
-import edu.curso.java.bo.Proyecto;
+import edu.curso.java.bo.Comentario;
+
 import edu.curso.java.bo.Tarea;
-import edu.curso.java.bo.Usuario;
-import edu.curso.java.controllers.autocomplete.ItemAutoComplete;
 
 public interface TareaService {
 
@@ -19,6 +18,6 @@ public interface TareaService {
 	
 	List<Tarea> listarTareas();
 	
-	//public Long guardarComentarioTarea(Comentario comentario, Long idTarea);
+	public Long guardarComentarioTarea(Comentario comentario, Long idTarea);
 
 }

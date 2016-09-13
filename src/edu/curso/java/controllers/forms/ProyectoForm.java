@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 
@@ -22,6 +23,7 @@ public class ProyectoForm {
 	private Date fechaInicio = new Date();
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaFin = new Date();
+	
 	
 	public Long getIdUsuarioPrincipal() {
 		return idUsuarioPrincipal;
@@ -116,6 +118,9 @@ public class ProyectoForm {
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+
+
+
 	
 	
 

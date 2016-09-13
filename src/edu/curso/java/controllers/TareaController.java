@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
@@ -83,7 +84,8 @@ public class TareaController {
 		Long idActual = tareaForm.getId();
 			tarea = new Tarea();
 			tarea.setTitulo(tareaForm.getTitulo());
-			//tarea.getComentarios(tareaForm.getComentarios())
+			tarea.setEstado(tareaForm.getEstado());
+			tarea.getComentarios();
 			tarea.setId(idActual);
 			proyectoService.guardarTareaProyecto(tarea, id);
 		
@@ -97,7 +99,8 @@ public class TareaController {
 		
 		
 			tarea.setTitulo(tareaForm.getTitulo());
-			//tarea.getComentarios(tareaForm.getComentarios());
+			
+			tarea.setEstado(tareaForm.getEstado());
 			tareaService.editarTarea(tarea);
 		
 		
