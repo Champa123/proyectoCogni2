@@ -50,9 +50,9 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<c:url value="/index.jsp" />">Home</a></li>
+            <li><a href="<c:url value="/home/index.html" />">Home</a></li>
             <li><a href="<c:url value="/proyectos/index.html" />">Proyectos</a></li>
-            <li><a href="<c:url value="/usuarios/listar.html" />">Listar</a></li>
+            <li><a href="<c:url value="/usuarios/listar.html" />">Usuarios</a></li>
             <li><a href="<c:url value="/tareas/listartareas.html" />">Tareas</a></li>
           </ul>
           <form class="navbar-form navbar-left">
