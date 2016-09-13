@@ -7,8 +7,12 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-
+	
+	
 	hacerBusqueda();
+	
+	
+	$('.fecha').datepicker({"dateFormat": "yy-mm-dd"});
 	
 	$('#textoBuscar').keypress(function(event){
 		var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -60,7 +64,7 @@ function hacerBusqueda (){
 		$('#divResultado').html(r);
 	});
 }	
-	
+
 </script>
 
 
@@ -69,9 +73,13 @@ function hacerBusqueda (){
 <br>
 <br>
 <form class="form-inline" id="buscador" method="post" action="buscadorproyectos.html">
-	<input type="text" id="textoBuscar" name="textoBuscar" placeholder="Buscar..." class="ui-widget">
-	<input id="btnBuscar" type="button" value="Buscar">
-</form>			
+	<input class="form-control" type="text" id="textoBuscar" name="textoBuscar" placeholder="Buscar..." class="ui-widget">
+	<input class="form-control fecha" placeholder="Fecha de inicio" name="fechaInicio" />
+	<input class="form-control fecha" placeholder="Fecha de finalización" name="fechaFin" />
+	<button type="button" class="btn btn-primary" id="btnBuscar">Buscar</button>
+</form>
+
+<br>
 
 <div id="divResultado"></div>
 <div id="divTareas"></div>

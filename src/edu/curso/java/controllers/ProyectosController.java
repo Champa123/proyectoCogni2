@@ -1,6 +1,10 @@
 package edu.curso.java.controllers;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,11 +51,31 @@ public class ProyectosController {
 	}
 
 	@RequestMapping(value = "/buscadorproyectos", method = RequestMethod.POST)
-	public String buscarProyectos(@RequestParam String textoBuscar, Model model) {
-		
-		List<Proyecto> proyectos = proyectoService.buscarProyectosPorNombre(textoBuscar);
+	public String buscarProyectos(@RequestParam String textoBuscar, @RequestParam String fechaInicio, @RequestParam String fechaFin, Model model) {
+		log.info("Buscando los proyectos");
+		DateFormat formatter = null;
+		formatter = new SimpleDateFormat("yyyy-MM-dd");
+		/*Date fechaIni = DateFormat.getInstance().parse(fechaInicio);
+		Date fechaF = DateFormat.getInstance().parse(fechaFin);
+		Date fechaIni2 = (Date)formatter.parse(fechaIni);
+			Date fechaFin2 = (Date)formatter.parse(fechaFin);*/
+		Date fechaIni2;
+		Date fechaFin2;
+		try {
+			fechaIni2 = formatter.parse(fechaInicio);
+			
+		} catch (ParseException e) {
+			fechaIni2=null;
+			
+		}
+		try{
+			fechaFin2 = formatter.parse(fechaFin);
+		}catch (ParseException e) {
+			fechaFin2=null;
+		}
+		List<Proyecto> proyectos = proyectoService.buscarProyectos(textoBuscar, fechaIni2, fechaFin2);
 		model.addAttribute("proyectos",proyectos);
-		return null;
+		return "/proyectos/buscadorproyectos";
 	}
 	//"/proyectos/verproyecto"
 	@RequestMapping(value = "/verproyecto")
@@ -196,4 +220,4 @@ public class ProyectosController {
 		return null;
 	}
 	
-	}
+}

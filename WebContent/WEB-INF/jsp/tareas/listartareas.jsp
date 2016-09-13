@@ -7,8 +7,47 @@
 
 
 
+<script>
+
+$(document).ready(function(){
+	
+buscarTarea();
+
+$('#textoTarea').keypress(function(event){
+	var keycode = (event.keyCode ? event.keyCode : event.which);
+	if(keycode == '13'){
+		event.preventDefault();
+		buscarTarea();
+		return false;
+	}
+	
+});
+
+
+$('#btnTarea').click(function(){
+	buscarTarea();
+});
+
+
+function buscarTarea (){
+	var datos = $('#buscadorTarea').serialize();
+	$.get('buscadortareas.html', datos, function(r){
+		$('#divResult').html(r);
+	});
+}	
+})
+</script>
+
+
+
+
 
 <h1>Listado de Tareas</h1>
+
+<form class="form-inline" id="buscadorTarea" method="get" action="buscadortareas.html?textoBuscar=">
+	<input type="text" id="textoTarea" name="textoTarea" placeholder="Buscar..." class="ui-widget">
+	<input id="btnTarea" type="button" value="Buscar">
+</form>
 
 <br>
 <table class="table table-striped table-bordered table-hover">
@@ -44,6 +83,9 @@
 	</c:forEach>
 	
 </table>
+
+<div id="divResult"></div>
+
 
 
 <c:import url="/general/template_bottom.jsp" />

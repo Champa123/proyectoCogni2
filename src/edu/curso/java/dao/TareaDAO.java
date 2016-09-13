@@ -18,4 +18,6 @@ public interface TareaDAO {
 	void editarTarea(Tarea tarea);
 	
 	List<Tarea> listarTareas();
+
+	public List<Tarea> buscarTareasPorNombre(String textoTarea);
 }

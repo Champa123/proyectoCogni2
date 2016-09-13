@@ -22,6 +22,7 @@
     <script src="<c:url value="/js/bootstrap.min.js" />"></script>
     <script src="<c:url value="/js/select2.full.min.js" />"></script>
     <script src="<c:url value="/js/jquery.validate.js" />"></script>
+ 
     <script>
    $(document).ready(function(){
     $("#autocomplete").autocomplete({
