@@ -1,5 +1,6 @@
 package edu.curso.java.services;
 
+import java.util.Date;
 import java.util.List;
 
 import edu.curso.java.bo.Proyecto;
@@ -14,7 +15,7 @@ public interface ProyectoService {
 	
 	Proyecto recuperarProyectoPorId(Long id);
 
-
+	
 	
 	void agregarUsuarioProyecto(Usuario usuario, Long id);
 	void borrarProyectoPorId(Long id);
@@ -22,7 +23,8 @@ public interface ProyectoService {
 	void editarProyecto(Proyecto proyecto);
 
 	public Long actualizarProyecto(Proyecto proyecto, Long idUsuarioPrincipal, List<Long> idUsuarios);
-	public List<Proyecto> buscarProyectosPorNombre(String term);
+	public List<Proyecto> buscarProyectos(String textoBuscar, Date fechaIni2, Date fechaFin2);
+	public List<Proyecto> buscarProyectos(String term);
 	Long guardarProyecto(Proyecto proyecto, Long idUsuarioPrincipal, List<Long> idUsuarios);
 	
 	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto);

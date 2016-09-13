@@ -18,6 +18,8 @@ public interface TareaService {
 	void editarTarea(Tarea tarea);
 	
 	List<Tarea> listarTareas();
+
+	public List<Tarea> buscarTareasPorNombre(String textoTarea);
 	
 	//public Long guardarComentarioTarea(Comentario comentario, Long idTarea);
 

@@ -7,32 +7,52 @@
 
 
 
+<script>
+
+$(document).ready(function(){
+	
+buscarTarea();
+
+$('#textoTarea').keypress(function(event){
+	var keycode = (event.keyCode ? event.keyCode : event.which);
+	if(keycode == '13'){
+		event.preventDefault();
+		buscarTarea();
+		return false;
+	}
+	
+});
+
+
+$('#btnTarea').click(function(){
+	buscarTarea();
+});
+
+
+function buscarTarea (){
+	var datos = $('#buscadorTarea').serialize();
+	$.get('buscadortareas.html', datos, function(r){
+		$('#divResult').html(r);
+	});
+}	
+})
+</script>
+
+
+
+
 
 <h1>Listado de Tareas</h1>
 
 <br>
-<table class="table table-striped table-bordered table-hover">
-	<tr>
-		<th>Id</th>
-		<th>Titulo</th>
-		<th></th>
-	
 
-	</tr>
-	<c:forEach items="${tareas}" var="t">
-		<tr>
-			<td>${t.id}</td>
-			<td>${t.titulo}</td>
-			<td align="center">
-			<a href="nuevocomentario.html?id=${t.id}" 
-					class="btn btn-success">Agregar Comentario</a>
-			<a href="listarcomentarios.html?id=${t.id}" 
-					class="btn btn-warning">Ver Comentarios</a>
-			</td>
-	
-		</tr>
-	</c:forEach>
-</table>
+<form class="form-inline" id="buscadorTarea" method="get" action="buscadortareas.html?textoBuscar=">
+	<input type="text" id="textoTarea" name="textoTarea" placeholder="Buscar..." class="ui-widget">
+	<input id="btnTarea" type="button" value="Buscar">
+</form>
+
+<div id="divResult"></div>
+
 
 
 <c:import url="/general/template_bottom.jsp" />

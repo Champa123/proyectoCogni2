@@ -23,7 +23,7 @@ public class ProyectosRestController {
 	
 	public List<ItemAutoComplete> autocomplete(@RequestParam String term){
 		List<ItemAutoComplete> items = new ArrayList<>();
-		List<Proyecto> proyectos = proyectoService.buscarProyectosPorNombre(term);
+		List<Proyecto> proyectos = proyectoService.buscarProyectos(term);
 		for (Proyecto proyecto : proyectos) {
 			ItemAutoComplete item = new ItemAutoComplete();
 			item.setId(proyecto.getId());

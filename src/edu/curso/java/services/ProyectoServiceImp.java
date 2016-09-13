@@ -1,5 +1,6 @@
 package edu.curso.java.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,9 +88,15 @@ public class ProyectoServiceImp implements ProyectoService {
 	}
 
 	@Override
-	public List<Proyecto> buscarProyectosPorNombre(String term) {
-		return proyectoDAO.buscarProyectoPorNombre(term);
+	public List<Proyecto> buscarProyectos(String textoBuscar, Date fechaIni2, Date fechaFin2) {
+		return proyectoDAO.buscarProyectos(textoBuscar, fechaIni2, fechaFin2);
 	}
+	
+	@Override
+	public List<Proyecto> buscarProyectos(String term) {
+		return proyectoDAO.buscarProyectos(term);
+	}
+	
 	@Override
 	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto){
 		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);

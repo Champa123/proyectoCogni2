@@ -112,4 +112,15 @@ public class TareaController {
 	public String guardarNuevaTarea(@RequestParam Long id, Model model) {
 		return "redirect:/comentarios/nuevocomentario.html?id="+id;
 	}
+	
+	
+	
+	@RequestMapping(value = "/buscadortareas", method = RequestMethod.GET)
+	public String buscarTareas(@RequestParam String textoTarea, Model model) {
+		List<Tarea> tareas = tareaService.buscarTareasPorNombre(textoTarea);
+		model.addAttribute("tareas",tareas);
+		return null;
 	}
+
+
+}
