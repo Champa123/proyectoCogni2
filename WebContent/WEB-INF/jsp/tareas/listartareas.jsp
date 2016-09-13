@@ -11,7 +11,7 @@
 
 $(document).ready(function(){
 	
-buscarTarea();
+	buscarTarea();
 
 $('#textoTarea').keypress(function(event){
 	var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -45,44 +45,10 @@ function buscarTarea (){
 <h1>Listado de Tareas</h1>
 
 <form class="form-inline" id="buscadorTarea" method="get" action="buscadortareas.html?textoBuscar=">
-	<input type="text" id="textoTarea" name="textoTarea" placeholder="Buscar..." class="ui-widget">
-	<input id="btnTarea" type="button" value="Buscar">
+	<input class="form-control" type="text" id="textoTarea" name="textoTarea" placeholder="Buscar..." class="ui-widget">
+	<button type="button" class="btn btn-default" id="btnTarea" type="button">Buscar</button>
 </form>
-
 <br>
-<table class="table table-striped table-bordered table-hover">
-	<tr>
-		<th>Id</th>
-		<th>Titulo</th>
-
-		<th>Horas</th>
-	
-
-		<th>Estado</th>
-		<th></th>
-
-
-	</tr>
-	<c:forEach items="${tareas}" var="t">
-		<tr>
-			<td>${t.id}</td>
-			<td>${t.titulo}</td>
-
-			<td>${t.horas}</td>
-	
-
-			<td>${t.estado}</td>
-
-			<td>
-				<a href="guardarnuevocomentario.html?id=${t.id}" 
-					class="btn btn-success">Agregar Comentario</a>
-			</td>
-
-
-		</tr>
-	</c:forEach>
-	
-</table>
 
 <div id="divResult"></div>
 

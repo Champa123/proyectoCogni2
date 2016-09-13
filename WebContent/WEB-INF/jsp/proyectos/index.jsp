@@ -76,7 +76,7 @@ function hacerBusqueda (){
 	<input class="form-control" type="text" id="textoBuscar" name="textoBuscar" placeholder="Buscar..." class="ui-widget">
 	<input class="form-control fecha" placeholder="Fecha de inicio" name="fechaInicio" />
 	<input class="form-control fecha" placeholder="Fecha de finalización" name="fechaFin" />
-	<button type="button" class="btn btn-primary" id="btnBuscar">Buscar</button>
+	<button type="button" class="btn btn-default" id="btnBuscar">Buscar</button>
 </form>
 
 <br>
