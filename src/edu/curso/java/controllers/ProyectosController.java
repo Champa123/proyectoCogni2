@@ -18,6 +18,7 @@ import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.forms.ProyectoForm;
 import edu.curso.java.controllers.forms.UsuarioForm;
+import edu.curso.java.exceptions.HorasInsuficientesException;
 import edu.curso.java.services.ProyectoService;
 import edu.curso.java.services.TareaService;
 import edu.curso.java.services.UsuarioService;
@@ -116,10 +117,17 @@ public class ProyectosController {
 //		return "redirect:/proyectos/verproyecto.html?id=" + idGenerado;
 //	}
 	
+	@RequestMapping(value="/error/horasInsuficientes", method=RequestMethod.GET)
+	public String horasInsuficientes(Model model) {
+		return null;
+	}
+	
 	@RequestMapping(value = "/guardarnuevoproyecto", method = RequestMethod.POST)
-	public String guardarNuevoProyecto(@RequestParam Long id ,@ModelAttribute("proyectoForm") ProyectoForm proyectoForm, Model model) {
+	public String guardarNuevoProyecto(@RequestParam Long id, @ModelAttribute("proyectoForm") ProyectoForm proyectoForm, Model model) {
+		
 		Proyecto proyecto = null;
-		Long idActual = proyectoForm.getId();
+		Long idActual = null;
+		
 		Long idUsuarioPrincipal = proyectoForm.getIdUsuarioPrincipal();
 		List<Long> idUsuarios = proyectoForm.getIdUsuarios();
 
@@ -128,16 +136,19 @@ public class ProyectosController {
 		proyecto.setDescripcion(proyectoForm.getDescripcion());
 		proyecto.setFechaInicio(proyectoForm.getFechaInicio());
 		proyecto.setFechaFin(proyectoForm.getFechaFin());
-		proyecto.setHorasAsignadas(proyectoForm.getHorasAsignadas());
-		proyecto.setSumaHorasTareas(proyectoForm.getSumaHorasTareas());
 		
-		idActual = proyectoService.guardarProyecto(proyecto, idUsuarioPrincipal, idUsuarios);
+		String returnPage = null;
 		
+		try {
+			proyecto.setHorasAsignadas(proyectoForm.getHorasAsignadas());
+			idActual = proyectoService.guardarProyecto(proyecto, idUsuarioPrincipal, idUsuarios);
+			returnPage = "redirect:/proyectos/verproyecto.html?id=" + idActual;
+		} catch (HorasInsuficientesException e) {
+			returnPage = "/error/horasInsuficientes";
+		}
 		
-		
-		
-		return "redirect:/proyectos/verproyecto.html?id=" + idActual;
-}
+		return returnPage;
+	}
 	
 	
 //	@RequestMapping(value = "/guardarproyecto", method = RequestMethod.POST)
@@ -164,26 +175,37 @@ public class ProyectosController {
 //}
 	@RequestMapping(value = "/guardareditproyecto", method = RequestMethod.POST)
 	public String guardareditproyecto(@ModelAttribute("proyectoForm") ProyectoForm proyectoForm, Model model) {
+		
 		Proyecto proyecto = null;
+		
 		Long idActual = proyectoForm.getId();
 		Long idUsuarioPrincipal = proyectoForm.getIdUsuarioPrincipal();
 		List<Long> idUsuarios = proyectoForm.getIdUsuarios();
-		if(idActual != null){
-			proyecto= proyectoService.recuperarProyectoPorId(idActual);
-			proyecto.setNombre(proyectoForm.getNombre());
-			proyecto.setDescripcion(proyectoForm.getDescripcion());
-			proyecto.setId(idActual);
-			proyecto.setFechaInicio(proyectoForm.getFechaInicio());
-			proyecto.setFechaFin(proyectoForm.getFechaFin());
-			proyecto.setHorasAsignadas(proyectoForm.getHorasAsignadas());
-			proyecto.setSumaHorasTareas(proyectoForm.getSumaHorasTareas());
-			
-			idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
-		} 
+
+		// TODO agregar una pagina de error para cuando se quiere editar poryecto inexistente 
+		String returnPage = "/error/noSeEncuentraProyecto";
 		
-		 
-		return "redirect:/proyectos/verproyecto.html?id=" + idActual;
-}
+			if (idActual != null) {
+				proyecto= proyectoService.recuperarProyectoPorId(idActual);
+				proyecto.setNombre(proyectoForm.getNombre());
+				proyecto.setDescripcion(proyectoForm.getDescripcion());
+				proyecto.setId(idActual);
+				proyecto.setFechaInicio(proyectoForm.getFechaInicio());
+				proyecto.setFechaFin(proyectoForm.getFechaFin());
+
+				try {
+					proyecto.setHorasAsignadas(proyectoForm.getHorasAsignadas());
+					// TODO me parece que es al pedo asignar el valor de idActual. Es el mismo?
+					proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
+					returnPage = "redirect:/proyectos/verproyecto.html?id=" + idActual;
+				} catch (HorasInsuficientesException e) {
+					returnPage = "/error/horasInsuficientes";
+				}
+			}
+
+		return returnPage;
+	}
+	
 	@RequestMapping(value = "/listartareas", method = RequestMethod.GET)
 	public String listarTareas(@RequestParam Long id, Model model) {
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(id);

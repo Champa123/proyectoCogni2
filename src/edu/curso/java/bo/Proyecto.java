@@ -1,6 +1,7 @@
 package edu.curso.java.bo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -26,24 +27,23 @@ public class Proyecto {
 	private Usuario usuarioPrincipal;
 	@ManyToMany
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
-//	@OneToMany (cascade= CascadeType.ALL)// TODO
-	@OneToMany
+	@OneToMany (cascade= CascadeType.ALL)// TODO
+//	@OneToMany
 	private List<Tarea> tareas = new ArrayList<>();
 	private Date fechaInicio = new Date();
 	private Date fechaFin = new Date();
-	private Long horasAsignadas;
-	private Long sumaHorasTareas;
+	private Long horasAsignadas = new Long(0);
+	private Long sumaHorasTareas = new Long (0);
 	
-	public void sumarHoras(Long horas) throws HorasInsuficientesException {
-		if ( this.getSumaHorasTareas() + horas <= this.getHorasAsignadas() ) {
-			this.setSumaHorasTareas(this.getSumaHorasTareas() + horas);
-		} else {
+	public void validarHoras() throws HorasInsuficientesException {
+		if ( sumaHorasTareas > horasAsignadas ) {
 			throw new HorasInsuficientesException("no hay horas disponibles");
 		}
 	}
 	
-	public void restarHoras(Long horas) {
-		this.setSumaHorasTareas(this.getSumaHorasTareas() - horas);
+	public void agregarTarea(Tarea tarea) throws HorasInsuficientesException {
+		setSumaHorasTareas( sumaHorasTareas + tarea.getHoras() );
+		tareas.add(tarea);
 	}
 	
 	public List<Usuario> getUsuarios() {
@@ -51,10 +51,17 @@ public class Proyecto {
 	}
 	
 	public List<Tarea> getTareas() {
-		return tareas;
+		List<Tarea> res = Collections.unmodifiableList(tareas);
+		return res;
 	}
 
-	public void setTareas(List<Tarea> tareas) {
+	public void setTareas(List<Tarea> tareas) throws HorasInsuficientesException {
+		Long horas = new Long(0);
+		for (Tarea tarea : tareas) {
+			horas = horas + tarea.getHoras();
+		}
+		this.setSumaHorasTareas(horas);
+		
 		this.tareas = tareas;
 	}
 
@@ -114,16 +121,18 @@ public class Proyecto {
 		return horasAsignadas;
 	}
 
-	public void setHorasAsignadas(Long horasAsignadas) {
+	public void setHorasAsignadas(Long horasAsignadas) throws HorasInsuficientesException {
 		this.horasAsignadas = horasAsignadas;
+		validarHoras();
 	}
 
 	public Long getSumaHorasTareas() {
 		return sumaHorasTareas;
 	}
 
-	public void setSumaHorasTareas(Long sumaHorasTareas) {
+	private void setSumaHorasTareas(Long sumaHorasTareas) throws HorasInsuficientesException {
 		this.sumaHorasTareas = sumaHorasTareas;
+		validarHoras();
 	}
 	
 }

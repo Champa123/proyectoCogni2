@@ -95,8 +95,7 @@ public class ProyectoServiceImp implements ProyectoService {
 	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto) throws HorasInsuficientesException{
 		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
 		
-		proyecto.sumarHoras(tarea.getHoras());
-		proyecto.getTareas().add(tarea);
+		proyecto.agregarTarea(tarea);
 		
 		proyectoDAO.editarProyecto(proyecto);
 		Long idActual=tareaDAO.guardarTarea(tarea);

@@ -95,17 +95,10 @@ public class TareaController {
 		try {
 			proyectoService.guardarTareaProyecto(tarea, id);
 		} catch (HorasInsuficientesException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			returnPage = "/error/horasInsuficientes";
 		}
 
 		return returnPage;
-	}
-	
-	@RequestMapping(value="/error/horasInsuficientes", method=RequestMethod.GET)
-	public String horasInsuficientes(Model model) {
-		return null;
 	}
 	
 	@RequestMapping(value = "/guardarediciontarea", method = RequestMethod.POST)
