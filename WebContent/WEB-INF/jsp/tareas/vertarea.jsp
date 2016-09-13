@@ -7,36 +7,62 @@
 	<tr>
 		<th>Id</th>
 		<th>Titulo</th>
-
-		<th>Horas</th>
-
 		<th>Estado</th>
-
+		<th>Horas</th>
 		<th></th>
 
 	</tr>
-	<c:forEach items="${tareas}" var="t">
-		<tr>
-			<td>${t.id}</td>
-			<td>${t.titulo}</td>
-
-			<td>${t.horas}</td>
-
-			<td>${t.estado}</td>
-
-			<td align="center">
-   
-   
-				<button type="button" class="btn btn-primary btn-modal-tarea" data-toggle="modal" 
-				data-id-tarea="${t.id}">Ver</button>
-				
-				<a href="/trackandbug/tareas/editartarea.html?id=${t.id}" 
-					class="btn btn-success">Editar</a>
-				
-					
-					
+	<c:forEach items="${tareas}" begin="0" end="4" var="tarea">
+		<c:if test="${tarea.estado == 'Completado'}">
+           		<tr class="success">
+           			<td>${tarea.id}</td>
+           			<td>${tarea.titulo}</td>
+           			<td>${tarea.estado}</td>
+           			<td>${tarea.horas}</td>
+           			<td align="center">
+           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
+						class="btn btn-primary">Editar</a>
+           			<button type="button" class="btn btn-success btn-modal-tarea" data-toggle="modal" 
+				data-id-tarea="${tarea.id}">Ver</button>
+			
 			</td>
-		</tr>
+           		</tr>
+           		</c:if>
+           		<c:if test="${tarea.estado == 'En curso'}">
+           		<tr class="warning">
+           			<td>${tarea.id}</td>
+           			<td>${tarea.titulo}</td>
+           			<td>${tarea.estado}</td>
+           			<td>${tarea.horas}</td>
+           			<td align="center">
+           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
+						class="btn btn-primary">Editar</a>
+           				<button type="button" class="btn btn-success btn-modal-tarea" data-toggle="modal" 
+						data-id-tarea="${tarea.id}">Ver</button>
+						
+					</td>
+           		</tr>
+           		</c:if>
+           		<c:if test="${tarea.estado == 'Cancelado'}">
+           		<tr class="danger">
+           			<td>${tarea.id}</td>
+           			<td>${tarea.titulo}</td>
+           			<td>${tarea.estado}</td>
+           			<td>${tarea.horas}</td>
+           			<td align="center">
+           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
+						class="btn btn-primary">Editar</a>
+           			<button type="button" class="btn btn-success btn-modal-tarea" data-toggle="modal" 
+				data-id-tarea="${tarea.id}">Ver</button>
+				
+				</td>
+           		</tr>
+           		</c:if>
+   
+   
+				
+					
+			
 	</c:forEach>
 </table>
 

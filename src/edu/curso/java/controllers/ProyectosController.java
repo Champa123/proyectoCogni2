@@ -163,6 +163,7 @@ public class ProyectosController {
 
 				try {
 					proyecto.setHorasAsignadas(proyectoForm.getHorasAsignadas());
+					log.info("ASD");
 					// TODO me parece que es al pedo asignar el valor de idActual. Es el mismo?
 					proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
 					returnPage = "redirect:/proyectos/verproyecto.html?id=" + idActual;

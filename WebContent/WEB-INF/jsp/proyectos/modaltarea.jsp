@@ -3,6 +3,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+
+
 <div class="container">
   <h2>Tarea</h2>
  
@@ -22,15 +25,38 @@
            		<th>Id</th>
            		<th>Titulo</th>
            		<th>Estado</th>
+           		<th>Horas</th>
+           		<th></th>
 
            		
            		</tr>
-           		<tr>
+           		<c:if test="${tarea.estado == 'Completado'}">
+           		<tr class="success">
            			<td>${tarea.id}</td>
            			<td>${tarea.titulo}</td>
            			<td>${tarea.estado}</td>
+           			<td>${tarea.horas}</td>
            			
            		</tr>
+           		</c:if>
+           		<c:if test="${tarea.estado == 'En curso'}">
+           		<tr class="warning">
+           			<td>${tarea.id}</td>
+           			<td>${tarea.titulo}</td>
+           			<td>${tarea.estado}</td>
+           			<td>${tarea.horas}</td>
+           			
+           		</tr>
+           		</c:if>
+           		<c:if test="${tarea.estado == 'Cancelado'}">
+           		<tr class="danger">
+           			<td>${tarea.id}</td>
+           			<td>${tarea.titulo}</td>
+           			<td>${tarea.estado}</td>
+           			<td>${tarea.horas}</td>
+           			
+           		</tr>
+           		</c:if>
            </table>
            <table class="table table-striped table-bordered table-hover">
            		<tr>
@@ -39,7 +65,7 @@
            		<th></th>
            		</tr>
            		
-           			<c:forEach items="${tarea.comentarios}" var="c">
+           			<c:forEach items="${tarea.comentarios}" begin="0" end="4" var="c">
            			<tr>
            				<td>
            					${c.comentario}

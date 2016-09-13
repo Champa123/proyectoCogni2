@@ -15,14 +15,6 @@
 			<label for="titulo">Titulo</label>
 			<form:input class="form-control" path="titulo" type="text" />
 		</div>
-
-		<form:select class="form-control" path="estado">
-			<option></option>
-			<option value="Completado">Completado</option>
-			<option value="En curso">En curso</option>
-			<option value="Cancelado">Cancelado</option>
-		</form:select>
-
 		<div class="form-group">
 			<label for="estado">Estado</label>
 			<form:select class="form-control" path="estado" type="select" >

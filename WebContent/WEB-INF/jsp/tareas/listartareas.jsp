@@ -24,23 +24,56 @@
 
 
 	</tr>
-	<c:forEach items="${tareas}" var="t">
-		<tr>
-			<td>${t.id}</td>
-			<td>${t.titulo}</td>
-
-			<td>${t.horas}</td>
-	
-
-			<td>${t.estado}</td>
-
-			<td>
-				<a href="guardarnuevocomentario.html?id=${t.id}" 
+	<c:forEach items="${tareas}" var="tarea">
+		
+		<c:if test="${tarea.estado == 'Completado'}">
+           		<tr class="success">
+           			<td>${tarea.id}</td>
+           			<td>${tarea.titulo}</td>
+           			<td>${tarea.estado}</td>
+           			<td>${tarea.horas}</td>
+           			
+           			<td>
+           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
+					class="btn btn-primary">Editar</a>
+					<a href="guardarnuevocomentario.html?id=${tarea.id}" 
 					class="btn btn-success">Agregar Comentario</a>
 			</td>
+           		</tr>
+           		</c:if>
+           		<c:if test="${tarea.estado == 'En curso'}">
+           		<tr class="warning">
+           			<td>${tarea.id}</td>
+           			<td>${tarea.titulo}</td>
+           			<td>${tarea.estado}</td>
+           			<td>${tarea.horas}</td>
+           			<td>
+           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
+						class="btn btn-primary">Editar</a>
+						<a href="guardarnuevocomentario.html?id=${tarea.id}" 
+					class="btn btn-success">Agregar Comentario</a>
+			</td>
+           		</tr>
+           		</c:if>
+           		<c:if test="${tarea.estado == 'Cancelado'}">
+           		<tr class="danger">
+           			<td>${tarea.id}</td>
+           			<td>${tarea.titulo}</td>
+           			<td>${tarea.estado}</td>
+           			<td>${tarea.horas}</td>
+           			<td>
+           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
+						class="btn btn-primary">Editar</a>
+           			<a href="guardarnuevocomentario.html?id=${tarea.id}" 
+					class="btn btn-success">Agregar Comentario</a>
+			</td>
+           		</tr>
+           		</c:if>
+
+		
 
 
-		</tr>
+		
 	</c:forEach>
 	
 </table>
