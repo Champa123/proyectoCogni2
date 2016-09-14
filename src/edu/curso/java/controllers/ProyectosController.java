@@ -115,7 +115,11 @@ public class ProyectosController {
 		proyectoForm.setId(proyecto.getId());
 		proyectoForm.setDescripcion(proyecto.getDescripcion());
 		proyectoForm.setNombre(proyecto.getNombre());
-		proyectoForm.setIdUsuarioPrincipal(usuarioPpal.getId());
+		if (usuarioPpal != null) {
+			proyectoForm.setIdUsuarioPrincipal(usuarioPpal.getId());
+		} else {
+			proyectoForm.setIdUsuarioPrincipal(null);
+		}
 		proyectoForm.setIdUsuarios(idUsuarios);
 		proyectoForm.setFechaInicio(proyecto.getFechaInicio());
 		proyectoForm.setFechaFin(proyecto.getFechaFin());

@@ -137,5 +137,15 @@ public class Proyecto {
 		validarHoras();
 	}
 
+	public void quitarUsuario(Usuario usuario) {
+		// TODO if not this usuarioPrincipal not null hace falta?
+		
+		if ( getUsuarioPrincipal() == usuario ) {
+		}
+		setUsuarioPrincipal(null);
+		
+		usuarios.remove(usuario);
+	}
+
 	
 }

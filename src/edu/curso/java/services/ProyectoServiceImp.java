@@ -1,5 +1,6 @@
 package edu.curso.java.services;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -99,6 +100,11 @@ public class ProyectoServiceImp implements ProyectoService {
 	}
 	
 	@Override
+	public List<Proyecto> buscarProyectosPorIdUsuario(Long id) {
+		return proyectoDAO.buscarProyectosPorIdUsuario(id);
+	}
+	
+	@Override
 	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto) throws HorasInsuficientesException{
 		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
 		
@@ -117,5 +123,16 @@ public class ProyectoServiceImp implements ProyectoService {
 		tareaDAO.editarTarea(tarea);
 		
 		
+	}
+
+	@Override
+	public void desligarUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+//		List<Proyecto> proyectosEdit = new ArrayList<Proyecto>();
+		List<Proyecto> proyectos = buscarProyectosPorIdUsuario(usuario.getId());
+		for (Proyecto proyecto : proyectos) {
+			proyecto.quitarUsuario(usuario);
+			editarProyecto(proyecto);// TODO preguntar si es una buena practica
+		}
 	}
 }
