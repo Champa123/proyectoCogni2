@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
@@ -47,8 +48,21 @@ public class ProyectosController {
 		
 		List<Proyecto> proyectos = proyectoService.listarProyectos();
 		model.addAttribute("proyectos",proyectos);
+		
 		return null;
 	}
+	
+	
+	
+	@RequestMapping(value = "/exportarExcel", method = RequestMethod.GET)
+	public ModelAndView exportarExcel(Model model) {
+
+		List<Proyecto> proyectos2 = proyectoService.listarProyectos();
+		model.addAttribute("proyectos",proyectos2);
+		return new ModelAndView ("excelView", "proyectos2", proyectos2);
+	}
+	
+	
 
 	@RequestMapping(value = "/buscadorproyectos", method = RequestMethod.POST)
 	public String buscarProyectos(@RequestParam String textoBuscar, @RequestParam String fechaInicio, @RequestParam String fechaFin, Model model) {
@@ -116,7 +130,11 @@ public class ProyectosController {
 		proyectoForm.setId(proyecto.getId());
 		proyectoForm.setDescripcion(proyecto.getDescripcion());
 		proyectoForm.setNombre(proyecto.getNombre());
-		proyectoForm.setIdUsuarioPrincipal(usuarioPpal.getId());
+		if (usuarioPpal != null) {
+			proyectoForm.setIdUsuarioPrincipal(usuarioPpal.getId());
+		} else {
+			proyectoForm.setIdUsuarioPrincipal(null);
+		}
 		proyectoForm.setIdUsuarios(idUsuarios);
 		proyectoForm.setFechaInicio(proyecto.getFechaInicio());
 		proyectoForm.setFechaFin(proyecto.getFechaFin());
