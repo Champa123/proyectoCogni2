@@ -9,11 +9,13 @@
 <br>
 <br>
 <br>
-	<form:form method="post" modelAttribute="tareaForm" action="guardarnuevatarea.html?id=${ID}">
-		<form:input path="id" type="hidden" />
-		<div class="form-group">
+<form:form method="post" modelAttribute="tareaForm" action="guardarnuevatarea.html?id=${ID}">
+	<form:input path="id" type="hidden" />
+	
+	<div class="form-group">
 		<label for="titulo">Titulo</label>
 		<form:input class="form-control" path="titulo" type="text" />
+
 		</div>
 		<div class="form-group">
 			<label for="estado">Estado</label>
@@ -23,19 +25,19 @@
 			<form:option class="form-control" value="Cancelado" >Cancelado</form:option>
 			</form:select>
 		</div>
-		
 
-		<div class="form-group">
-			<label for="horas">Horas</label>
-			<form:input class="form-control" path="horas" type="number" />
-		</div>
 
-		<div class="form-group">
+	<div class="form-group">
+		<label for="horas">Horas</label>
+		<form:input class="form-control" path="horas" type="number" />
+	</div>
+
+	<div class="form-group">
 		<input type="submit" class="btn btn-success" value="Guardar">
 		<a href="guardarnuevatarea.html?id=${ID}" 
 					class="btn btn-danger">Volver </a>
-		</div>
-	</form:form>
+	</div>
+</form:form>
 	
 
 <c:import url="/general/template_bottom.jsp" />

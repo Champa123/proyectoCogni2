@@ -18,15 +18,33 @@
 <br>
 	<form:form method="post" modelAttribute="usuarioForm" action="guardaredicion.html">
 		<form:input path="id" type="hidden" />
-		Nombre y apellido: <form:input class="form-control required" path="nombreCompleto" type="text" />
-		User: <form:input class="form-control required" path="usuario" type="text" />
-		<form:input path="password" hidden="true" type="password" />
-		Fecha de alta: <form:input id="fechaAlta" path="fechaAlta" class="form-control required" type="text" />
-		¿Activo? <form:checkbox  path="activo"/>
-		<br><br>
-		<input type="submit" class="btn btn-success" value="Guardar">
-		<a href="listar.html" 
-					class="btn btn-danger">Volver </a>
+		<form:input path="password" type="hidden" />
+		<div class="form-group">
+			<label for="nombreCompleto">Nombre y apellido</label>
+			<form:input class="form-control required" path="nombreCompleto" type="text" />
+		</div>
+		
+		<div class="form-group">
+			<label for="usuario">Usuario</label>
+			<form:input class="form-control required" path="usuario" type="text" />
+		</div>
+		
+		<div class="form-group">
+			<label for="fechaAlta">Fecha de alta</label>
+			<form:input id="fechaAlta" path="fechaAlta" class="form-control required" type="text" />
+		</div>
+				
+		<div class="form-group">
+			<label for="activo">¿Activo?</label>
+			<form:checkbox  path="activo"/>
+		</div>
+		
+		<div class="form-group">
+			<input type="submit" class="btn btn-success" value="Guardar">
+			<a href="listar.html" 
+						class="btn btn-danger">Volver </a>
+		</div>
+		
 	</form:form>
 	
 
