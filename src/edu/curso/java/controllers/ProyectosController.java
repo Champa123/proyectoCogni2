@@ -88,6 +88,7 @@ public class ProyectosController {
 	public String modal(@RequestParam Long id, Model model) {
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(id);
 		model.addAttribute("proyecto", proyecto);
+		model.addAttribute("usuarios", proyecto.getUsuarios());
 		return null;
 	}
 	
@@ -220,5 +221,6 @@ public class ProyectosController {
 		model.addAttribute("tarea", tarea);
 		return null;
 	}
+	
 	
 }

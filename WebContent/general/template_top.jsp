@@ -25,7 +25,8 @@
  
     <script>
    $(document).ready(function(){
-    $("#autocomplete").autocomplete({
+	   
+    $("#autocomplete-1").autocomplete({
     	source: '<c:url value="/api/proyectos/autocomplete.json"/>', 
     	minLength:2,
     	select: function(event , ui) {
@@ -37,7 +38,7 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav  class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -46,7 +47,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Track & Bug</a>
+          <a class="navbar-brand" style="z-index: -1" href="#">Track & Bug</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -55,10 +56,11 @@
             <li><a href="<c:url value="/usuarios/listar.html" />">Usuarios</a></li>
             <li><a href="<c:url value="/tareas/listartareas.html" />">Tareas</a></li>
           </ul>
-          <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input id="autocomplete" type="text" class="form-control" placeholder="Search">
-        </div>
+          <form role="search" class="navbar-form navbar-left">
+        <div class="input-group">
+                        <input type="text" id="autocomplete-1" class="ui-autocomplete-input form-control" placeholder="Search">
+                        
+                    </div>
       </form>
        </div>
         <!--/.nav-collapse -->

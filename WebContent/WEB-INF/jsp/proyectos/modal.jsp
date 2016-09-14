@@ -25,6 +25,8 @@
            		<th>Fecha de inicio</th>
 				<th>Fecha de fin</th>
            		<th>Usuario Principal</th>
+           		<th>Horas Asignadas</th>
+           		<th>Horas Disponibles</th>
            		</tr>
            		<tr>
            			<td>${proyecto.id}</td>
@@ -32,8 +34,26 @@
            			<td><fmt:formatDate value="${proyecto.fechaInicio}" pattern="yyyy-MM-dd" /></td>
            			<td><fmt:formatDate value="${proyecto.fechaFin}" pattern="yyyy-MM-dd" /></td>
            			<td>${proyecto.usuarioPrincipal.nombreCompleto}</td>
+           			<td>${proyecto.horasAsignadas}</td>
+           			<td>${proyecto.horasAsignadas - proyecto.sumaHorasTareas}</td>
            		</tr>
            </table>
+           <h4 class="modal-subtitle">Usuarios</h4>
+            <table class="table table-striped table-bordered table-hover">
+           		<tr>
+           		<th>Id</th>
+           		<th>Nombre</th>
+           		<th>Fecha de inicio</th>
+				</tr>
+				
+				<c:forEach items="${usuarios}" var="u">
+				<tr>
+				<td>${u.id}</td>
+				<td>${u.nombreCompleto}</td>
+				<td>${u.fechaAlta}</td>
+				</tr>
+				</c:forEach>
+				</table>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

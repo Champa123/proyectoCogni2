@@ -44,12 +44,12 @@ public class ComentarioController {
 		comentarioService.borrarComentario(idComent,idTarea);
 		return "redirect:/proyectos/index.html";
 	}
-	@RequestMapping(value = "/nuevocomentario")
+	@RequestMapping(value = "/nuevocomentario", method = RequestMethod.GET)
 	public String nuevoComentario(Model model, @RequestParam Long id) {
 		model.addAttribute("comentarioForm", new ComentarioForm());
 		model.addAttribute("id",id);
 		
-		return "/comentarios/form";
+		return "/tareas/modalcomentario";
 	}
 	@RequestMapping(value = "/guardarnuevocomentario", method = RequestMethod.POST)
 	public String guardarNuevoComentario(@RequestParam Long id ,@ModelAttribute("comentarioForm") ComentarioForm comentarioForm, Model model) {
@@ -58,12 +58,8 @@ public class ComentarioController {
 			comentario = new Comentario();
 			comentario.setComentario(comentarioForm.getComentario());
 			comentario.setId(idActual);
-			
 			tareaService.guardarComentarioTarea(comentario, id);
-		
-		
-		
-		return "redirect:/proyectos/index.html";
+		return "redirect:/tareas/listartareas.html";
 }
 
 }

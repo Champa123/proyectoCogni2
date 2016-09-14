@@ -128,5 +128,8 @@ public class TareaController {
 		return null;
 	}
 
-
+	@RequestMapping(value = "/modalcomentario", method = RequestMethod.GET)
+	public String modalTarea(@RequestParam Long id, Model model) {	
+		return "redirect:/comentarios/nuevocomentario.html?id="+ id;
+	}
 }

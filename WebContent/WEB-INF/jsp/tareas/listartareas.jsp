@@ -23,6 +23,15 @@ $('#textoTarea').keypress(function(event){
 	
 });
 
+$("#divResult").delegate(".btn-modal", "click", function(){
+	var id = $(this).data("id-tarea");
+	$.get("modalcomentario.html?id=" + id, function(resp){
+		$("#myModalComentario").html(resp);
+		$("#myModalComentario").modal("show");
+	});
+});
+
+	
 
 $('#btnTarea').click(function(){
 	buscarTarea();
@@ -48,7 +57,7 @@ function buscarTarea (){
 <br>
 
 <div id="divResult"></div>
-
+<div class="modal fade" id="myModalComentario" role="dialog"></div>
 
 
 <c:import url="/general/template_bottom.jsp" />

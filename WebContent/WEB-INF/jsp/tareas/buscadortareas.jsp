@@ -25,8 +25,8 @@
            			<td>
            			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
 					class="btn btn-primary">Editar</a>
-					<a href="guardarnuevocomentario.html?id=${tarea.id}" 
-					class="btn btn-success">Agregar Comentario</a>
+					<button type="button" class="btn btn-success btn-modal" data-toggle="modal" 
+					data-id-tarea="${tarea.id}">Agregar Comentario</button>
 			</td>
            		</tr>
            		</c:if>
@@ -39,8 +39,8 @@
            			<td>
            			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
 						class="btn btn-primary">Editar</a>
-						<a href="guardarnuevocomentario.html?id=${tarea.id}" 
-					class="btn btn-success">Agregar Comentario</a>
+					<button type="button" class="btn btn-success btn-modal" data-toggle="modal" 
+					data-id-tarea="${tarea.id}">Agregar Comentario</button>
 			</td>
            		</tr>
            		</c:if>
@@ -53,8 +53,8 @@
            			<td>
            			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
 						class="btn btn-primary">Editar</a>
-           			<a href="guardarnuevocomentario.html?id=${tarea.id}" 
-					class="btn btn-success">Agregar Comentario</a>
+           			<button type="button" class="btn btn-success btn-modal" data-toggle="modal" 
+					data-id-tarea="${tarea.id}">Agregar Comentario</button>
 			</td>
            		</tr>
            		</c:if>
