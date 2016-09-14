@@ -65,6 +65,9 @@ function hacerBusqueda (){
 	});
 }	
 
+
+
+
 </script>
 
 
@@ -72,6 +75,7 @@ function hacerBusqueda (){
 <a href="nuevoproyecto.html" class="btn btn-warning">Agregar nuevo </a>
 <br>
 <br>
+<button type="button" onclick="location.href='exportarExcel.html?output=excel'" class="btn btn-success">Descargar tabla en Excel</button>
 <form class="form-inline" id="buscador" method="post" action="buscadorproyectos.html">
 	<input class="form-control" type="text" id="textoBuscar" name="textoBuscar" placeholder="Buscar..." class="ui-widget">
 	<input class="form-control fecha" placeholder="Fecha de inicio" name="fechaInicio" />
