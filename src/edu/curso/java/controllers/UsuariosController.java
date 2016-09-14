@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.forms.UsuarioForm;
+import edu.curso.java.services.ProyectoService;
+import edu.curso.java.services.TareaService;
 import edu.curso.java.services.UsuarioService;
 
 @Controller
@@ -20,6 +22,13 @@ public class UsuariosController {
 
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private ProyectoService proyectoService;
+
+	// TODO para despues cuando se le asignen tareas a usuarios
+//	@Autowired
+//	private TareaService tareaService;
 
 	@RequestMapping(value = "/listar")
 	public String listar(Model model) {
@@ -36,8 +45,15 @@ public class UsuariosController {
 		return null;
 	}
 
+	// borra un usuario de la base y lo quita de todos los proyectos y
+	// todas las tareas en las que estaba.
+	// si era el principal de un proyecto, queda en null?
 	@RequestMapping(value = "/borrarusuario")
 	public String borrarUsuario(@RequestParam Long id, Model model) {
+		// TODO para cuando se le asignen tareas a usuarios
+//		tareaService.quitarUsuario(id)
+		Usuario usuario = usuarioService.recuperarUsuarioPorId(id);
+		proyectoService.desligarUsuario(usuario);
 		usuarioService.borrarUsuario(id);
 		return "redirect:/usuarios/listar.html";
 	}
