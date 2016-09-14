@@ -38,52 +38,6 @@ function buscarTarea (){
 })
 </script>
 
-	</tr>
-	<c:forEach items="${tareas}" var="tarea">
-		
-		<c:if test="${tarea.estado == 'Completado'}">
-           		<tr class="success">
-           			<td>${tarea.id}</td>
-           			<td>${tarea.titulo}</td>
-           			<td>${tarea.estado}</td>
-           			<td>${tarea.horas}</td>
-           			
-           			<td>
-           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
-					class="btn btn-primary">Editar</a>
-					<a href="guardarnuevocomentario.html?id=${tarea.id}" 
-					class="btn btn-success">Agregar Comentario</a>
-			</td>
-           		</tr>
-           		</c:if>
-           		<c:if test="${tarea.estado == 'En curso'}">
-           		<tr class="warning">
-           			<td>${tarea.id}</td>
-           			<td>${tarea.titulo}</td>
-           			<td>${tarea.estado}</td>
-           			<td>${tarea.horas}</td>
-           			<td>
-           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
-						class="btn btn-primary">Editar</a>
-						<a href="guardarnuevocomentario.html?id=${tarea.id}" 
-					class="btn btn-success">Agregar Comentario</a>
-			</td>
-           		</tr>
-           		</c:if>
-           		<c:if test="${tarea.estado == 'Cancelado'}">
-           		<tr class="danger">
-           			<td>${tarea.id}</td>
-           			<td>${tarea.titulo}</td>
-           			<td>${tarea.estado}</td>
-           			<td>${tarea.horas}</td>
-           			<td>
-           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
-						class="btn btn-primary">Editar</a>
-           			<a href="guardarnuevocomentario.html?id=${tarea.id}" 
-					class="btn btn-success">Agregar Comentario</a>
-			</td>
-           		</tr>
-           		</c:if>
 
 <h1>Listado de Tareas</h1>
 
@@ -95,13 +49,6 @@ function buscarTarea (){
 
 <div id="divResult"></div>
 
-<<<<<<< HEAD
-		
-	</c:forEach>
-	
-</table>
-=======
->>>>>>> 8cdad033ee265344a59608669c3cf6fdcf72d336
 
 
 <c:import url="/general/template_bottom.jsp" />
