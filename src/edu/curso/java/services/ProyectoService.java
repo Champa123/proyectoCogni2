@@ -38,4 +38,6 @@ public interface ProyectoService {
 	List<Proyecto> buscarProyectosPorIdUsuario(Long id);
 
 	public void desligarUsuario(Usuario usuario);
+
+	public Proyecto buscarProyectoPorIdTarea(Long id);
 }

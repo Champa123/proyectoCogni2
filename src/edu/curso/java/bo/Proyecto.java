@@ -147,5 +147,9 @@ public class Proyecto {
 		usuarios.remove(usuario);
 	}
 
+	public void editarHorasTarea(long diferenciaHorasTarea) throws HorasInsuficientesException {
+		setSumaHorasTareas(sumaHorasTareas - diferenciaHorasTarea);
+	}
+
 	
 }

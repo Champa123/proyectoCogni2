@@ -135,4 +135,10 @@ public class ProyectoServiceImp implements ProyectoService {
 			editarProyecto(proyecto);// TODO preguntar si es una buena practica
 		}
 	}
+
+	@Override
+	public Proyecto buscarProyectoPorIdTarea(Long id) {
+		Proyecto res = proyectoDAO.buscarProyectoPorIdTarea(id);
+		return res;
+	}
 }
