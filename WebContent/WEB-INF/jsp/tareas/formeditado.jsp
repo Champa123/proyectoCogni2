@@ -43,7 +43,7 @@ $(function(){
 
 		<div class="form-group">
 			<input type="submit" class="btn btn-success" value="Guardar">
-			<a href="proyectos/index.html" 
+			<a href="listartareas.html" 
 					class="btn btn-danger">Volver </a>
 		</div>
 	</form:form>
