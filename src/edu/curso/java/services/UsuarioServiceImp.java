@@ -26,7 +26,6 @@ public class UsuarioServiceImp implements UsuarioService {
 	 */
 	@Override
 	public Long crearNuevoUsuario(Usuario usuario) {
-		usuario.setActivo(true);
 		return usuarioDAO.guardarUsuario(usuario);
 	}
 	

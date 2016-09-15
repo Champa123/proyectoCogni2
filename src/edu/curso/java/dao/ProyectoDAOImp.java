@@ -110,4 +110,21 @@ public class ProyectoDAOImp implements ProyectoDAO {
 		return result;
 	}
 
+	@Override
+	public Proyecto buscarProyectoPorIdTarea(Long id) {
+		
+		String sql = "select id, nombre, descripcion, usuarioPrincipal_id, fechaInicio, fechaFin," + 
+				" horasAsignadas, sumaHorasTareas" +
+				" from Proyecto as p" +
+				" inner join proyecto_tarea as p_t on p.id = p_t.Proyecto_id" +
+				" where p_t.tareas_id = " + id +
+				" group by p.id";
+		
+		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.addEntity(Proyecto.class);
+		Proyecto res = (Proyecto) query.uniqueResult();
+		
+		return res;
+	}
+
 }
