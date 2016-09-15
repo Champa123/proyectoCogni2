@@ -47,7 +47,7 @@ public class UsuariosController {
 
 	// borra un usuario de la base y lo quita de todos los proyectos y
 	// todas las tareas en las que estaba.
-	// si era el principal de un proyecto, queda en null?
+	// si era el principal de un proyecto, queda en null
 	@RequestMapping(value = "/borrarusuario")
 	public String borrarUsuario(@RequestParam Long id, Model model) {
 		// TODO para cuando se le asignen tareas a usuarios
