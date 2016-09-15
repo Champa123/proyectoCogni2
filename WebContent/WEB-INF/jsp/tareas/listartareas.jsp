@@ -30,7 +30,13 @@ $("#divResult").delegate(".btn-modal", "click", function(){
 		$("#myModalComentario").modal("show");
 	});
 });
-
+$("#divResult").delegate(".btn-modal-usuarios", "click", function(){
+	var id = $(this).data("id-tarea");
+	$.get("modalusuario.html?id=" + id, function(resp){
+		$("#myModalUsuario").html(resp);
+		$("#myModalUsuario").modal("show");
+	});
+});
 	
 
 $('#btnTarea').click(function(){
@@ -59,5 +65,7 @@ function buscarTarea (){
 <div id="divResult"></div>
 <div class="modal fade" id="myModalComentario" role="dialog"></div>
 
+<div class="modal fade" id="myModalUsuario" role="dialog"></div>
+<div id="divUsuarios"></div>
 
 <c:import url="/general/template_bottom.jsp" />

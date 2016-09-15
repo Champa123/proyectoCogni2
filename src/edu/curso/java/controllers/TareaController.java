@@ -35,8 +35,8 @@ public class TareaController {
 	@Autowired
 	private TareaService tareaService;
 
-//	@Autowired
-//	private UsuarioService usuarioService;
+	@Autowired
+	private UsuarioService usuarioService;
 	
 
 	//"/proyectos/verproyecto"
@@ -61,23 +61,32 @@ public class TareaController {
 	
 	@RequestMapping(value = "/nuevatarea")
 	public String nuevaTarea(Model model, @RequestParam Long id) {
+		
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(id);
+		List<Usuario> usuarios= new ArrayList<>();
+		
+		for (Usuario usuario : proyecto.getUsuarios()) {
+			usuarios.add(usuario);
+		}
+		model.addAttribute("usuarios", usuarios);
 		model.addAttribute("tareaForm", new TareaForm());
 		model.addAttribute("ID",id);
 		return "/tareas/form";
 	}
 	
 	@RequestMapping(value = "/editartarea")
-	public String editarTarea(@RequestParam Long id, Model model) {
-		Tarea tarea = tareaService.recuperarTareaPorId(id);
+	public String editarTarea(@RequestParam Long idTarea,@RequestParam Long idProy, Model model) {
+		Tarea tarea = tareaService.recuperarTareaPorId(idTarea);
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(idProy);
 		TareaForm tareaForm = new TareaForm();
 		
 		tareaForm.setId(tarea.getId());
-
-//		tareaForm.getComentarios(tarea.getComentarios);
 		tareaForm.setEstado(tarea.getEstado());
 		tareaForm.setTitulo(tarea.getTitulo());
 		tareaForm.setHoras(tarea.getHoras());
-		
+		List<Long> idUsuarios = tarea.getUsuarios().stream().map((Usuario u) -> u.getId()).collect(Collectors.toList());
+		tareaForm.setIdUsuarios(idUsuarios);
+		model.addAttribute("usuarios",proyecto.getUsuarios());
 		model.addAttribute("tareaForm", tareaForm);
 		model.addAttribute("tarea",tarea);
 		return "/tareas/formeditado";
@@ -87,6 +96,8 @@ public class TareaController {
 	@RequestMapping(value = "/guardarnuevatarea", method = RequestMethod.POST)
 	public String guardarNuevaTarea(@RequestParam Long id ,@ModelAttribute("tareaForm") TareaForm tareaForm, Model model) {
 		Tarea tarea = null;
+		Usuario usuario = null;
+		List<Usuario> usuarios = new ArrayList<>();
 		Long idActual = tareaForm.getId();
 		tarea = new Tarea();
 		tarea.setTitulo(tareaForm.getTitulo());
@@ -94,6 +105,12 @@ public class TareaController {
 		tarea.setHoras(tareaForm.getHoras());
 		tarea.setEstado(tareaForm.getEstado());
 		tarea.getComentarios();
+		tarea.setUsuarios(usuarios);
+		for (Long idUsuario : tareaForm.getIdUsuarios()) {
+			usuario= usuarioService.recuperarUsuarioPorId(idUsuario);
+			tarea.getUsuarios().add(usuario);	
+		}
+		
 		String returnPage = "redirect:/proyectos/index.html"; 
 		try {
 			proyectoService.guardarTareaProyecto(tarea, id);
@@ -107,9 +124,18 @@ public class TareaController {
 	@RequestMapping(value = "/guardarediciontarea", method = RequestMethod.POST)
 	public String guardarEdicionTarea(@RequestParam Long id ,@ModelAttribute("tareaForm") TareaForm tareaForm, Model model) {
 		Tarea tarea = tareaService.recuperarTareaPorId(id);
+		Usuario usuario = null;
+		List<Usuario> usuarios = new ArrayList<>();
+	
 			tarea.setTitulo(tareaForm.getTitulo());
 			tarea.setHoras(tareaForm.getHoras());
 			tarea.setEstado(tareaForm.getEstado());
+			
+			for (Long idUsuario : tareaForm.getIdUsuarios()) {
+				usuario = usuarioService.recuperarUsuarioPorId(idUsuario);
+				usuarios.add(usuario);
+			}
+			tarea.setUsuarios(usuarios);
 			tareaService.editarTarea(tarea);
 		return "redirect:/proyectos/index.html";
 }
@@ -131,5 +157,12 @@ public class TareaController {
 	@RequestMapping(value = "/modalcomentario", method = RequestMethod.GET)
 	public String modalTarea(@RequestParam Long id, Model model) {	
 		return "redirect:/comentarios/nuevocomentario.html?id="+ id;
+	}
+	@RequestMapping(value = "/modalusuario", method = RequestMethod.GET)
+	public String modalUsuario(@RequestParam Long id, Model model) {	
+		Tarea tarea = tareaService.recuperarTareaPorId(id);
+		model.addAttribute("usuarios", tarea.getUsuarios());
+		model.addAttribute("tarea",tarea);
+		return null;
 	}
 }

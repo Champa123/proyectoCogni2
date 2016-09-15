@@ -44,6 +44,7 @@ public class UsuarioDAOImp implements UsuarioDAO {
 				.createQuery(hql);
 		return query.list();
 	}
+	
 
 	@Override
 	public void borrarUsuarioPorId(Long id) {

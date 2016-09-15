@@ -71,10 +71,28 @@
            					${c.comentario}
            					
            				</td>
-           				<td>
+           				<td align="center">
            					<a href="/trackandbug/comentarios/borrarcomentario.html?idComent=${c.id}&idTarea=${tarea.id}" 
 					class="btn btn-danger">Borrar</a>
            				</td>
+              		</tr>
+           			</c:forEach>
+
+           </table>
+              <table class="table table-striped table-bordered table-hover">
+           		<tr>
+           		
+           		<th>Usuarios de esta tarea</th>
+           		
+           		</tr>
+           		
+           			<c:forEach items="${tarea.usuarios}" begin="0" end="4" var="u">
+           			<tr>
+           				<td>
+           					${u.nombreCompleto}
+           					
+           				</td>
+           				
               		</tr>
            			</c:forEach>
 

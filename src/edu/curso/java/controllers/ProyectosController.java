@@ -225,6 +225,8 @@ public class ProyectosController {
 		for (Tarea tarea : proyecto.getTareas()) {
 			tareas.add(tarea);
 		}
+		
+		model.addAttribute("id", id);
 		model.addAttribute("tareas",tareas);
 		return "/tareas/vertarea";
 	}
@@ -239,6 +241,17 @@ public class ProyectosController {
 		model.addAttribute("tarea", tarea);
 		return null;
 	}
+	@RequestMapping(value = "/vertareas", method = RequestMethod.GET)
+	public String verTareas(@RequestParam Long id, Model model) {
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(id);
+		List<Tarea> tareas = new ArrayList<>();
+		for (Tarea tarea : proyecto.getTareas()) {
+			tareas.add(tarea);
+		}
 	
+		model.addAttribute("proyecto",proyecto);
+		model.addAttribute("tareas",tareas);
+		return "/tareas/vertodas";
+	}
 	
 }

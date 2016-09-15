@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import edu.curso.java.bo.Comentario;
+import edu.curso.java.bo.Usuario;
 
 @Entity
 public class TareaForm {
@@ -23,6 +24,7 @@ public class TareaForm {
 	private String estado;
 
 	private List<Comentario> comentarios= new ArrayList<>();
+	private List<Long> idUsuarios;
 
 
 	
@@ -86,6 +88,13 @@ public class TareaForm {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public List<Long> getIdUsuarios() {
+		return idUsuarios;
+	}
+	public void setIdUsuarios(List<Long> idUsuarios) {
+		this.idUsuarios = idUsuarios;
 	}
 
 	

@@ -4,6 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
+		
 <table id="tablaTareas" class="table table-striped table-bordered table-hover">
 	<tr>
 		<th>Id</th>
@@ -22,9 +24,10 @@
            			<td>${tarea.estado}</td>
            			<td>${tarea.horas}</td>
            			
-           			<td>
-           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
-					class="btn btn-primary">Editar</a>
+           			<td align="center">
+           			<button type="button" class="btn btn-primary btn-modal-usuarios" data-toggle="modal" 
+					data-id-tarea="${tarea.id}">Ver usuarios</button>
+					
 					<button type="button" class="btn btn-success btn-modal" data-toggle="modal" 
 					data-id-tarea="${tarea.id}">Agregar Comentario</button>
 			</td>
@@ -36,9 +39,9 @@
            			<td>${tarea.titulo}</td>
            			<td>${tarea.estado}</td>
            			<td>${tarea.horas}</td>
-           			<td>
-           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
-						class="btn btn-primary">Editar</a>
+           			<td align ="center">
+           			<button type="button" class="btn btn-primary btn-modal-usuarios" data-toggle="modal" 
+					data-id-tarea="${tarea.id}">Ver usuarios</button>
 					<button type="button" class="btn btn-success btn-modal" data-toggle="modal" 
 					data-id-tarea="${tarea.id}">Agregar Comentario</button>
 			</td>
@@ -50,9 +53,9 @@
            			<td>${tarea.titulo}</td>
            			<td>${tarea.estado}</td>
            			<td>${tarea.horas}</td>
-           			<td>
-           			<a href="/trackandbug/tareas/editartarea.html?id=${tarea.id}" 
-						class="btn btn-primary">Editar</a>
+           			<td align="center">
+           			<button type="button" class="btn btn-primary btn-modal-usuarios" data-toggle="modal" 
+					data-id-tarea="${tarea.id}">Ver usuarios</button>
            			<button type="button" class="btn btn-success btn-modal" data-toggle="modal" 
 					data-id-tarea="${tarea.id}">Agregar Comentario</button>
 			</td>

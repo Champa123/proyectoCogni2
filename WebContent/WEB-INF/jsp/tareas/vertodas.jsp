@@ -2,22 +2,21 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:import url="/general/template_top.jsp" />
+<h3>Proyecto: ${proyecto.nombre}</h3>
 <table class="table table-striped table-bordered table-hover">
 	<tr>
 		<th>Id</th>
 		<th>Titulo</th>
 		<th>Estado</th>
 		<th>Horas</th>
+		<th></th>
 		
-			<td align="center">
-				<a  href="/trackandbug/proyectos/vertareas.html?id=${id}" 
-				class="btn btn-info">Ver todas las tareas</a> 
-			</td>
+			
 		
 
 	</tr>
-	<c:forEach items="${tareas}" begin="0" end="4" var="tarea">
+	<c:forEach items="${tareas}"  var="tarea">
 		<c:if test="${tarea.estado == 'Completado'}">
            		<tr class="success">
            			<td>${tarea.id}</td>
@@ -25,7 +24,7 @@
            			<td>${tarea.estado}</td>
            			<td>${tarea.horas}</td>
            			<td align="center">
-           			<a href="/trackandbug/tareas/editartarea.html?idTarea=${tarea.id}&idProy=${id}" 
+           			<a href="/trackandbug/tareas/editartarea.html?idTarea=${tarea.id}&idProy=${proyecto.id}" 
 						class="btn btn-primary">Editar</a>
            			<button type="button" class="btn btn-success btn-modal-tarea" data-toggle="modal" 
 				data-id-tarea="${tarea.id}">Ver</button>
@@ -40,7 +39,7 @@
            			<td>${tarea.estado}</td>
            			<td>${tarea.horas}</td>
            			<td align="center">
-           			<a href="/trackandbug/tareas/editartarea.html?idTarea=${tarea.id}&idProy=${id}" 
+           			<a href="/trackandbug/tareas/editartarea.html?idTarea=${tarea.id}&idProy=${proyecto.id}" 
 						class="btn btn-primary">Editar</a>
            				<button type="button" class="btn btn-success btn-modal-tarea" data-toggle="modal" 
 						data-id-tarea="${tarea.id}">Ver</button>
@@ -55,7 +54,7 @@
            			<td>${tarea.estado}</td>
            			<td>${tarea.horas}</td>
            			<td align="center">
-           			<a href="/trackandbug/tareas/editartarea.html?idTarea=${tarea.id}&idProy=${id}" 
+           			<a href="/trackandbug/tareas/editartarea.html?idTarea=${tarea.id}&idProy=${proyecto.id}" 
 						class="btn btn-primary">Editar</a>
            			<button type="button" class="btn btn-success btn-modal-tarea" data-toggle="modal" 
 				data-id-tarea="${tarea.id}">Ver</button>
@@ -71,3 +70,4 @@
 	</c:forEach>
 </table>
 
+<c:import url="/general/template_bottom.jsp" />
