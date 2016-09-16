@@ -28,26 +28,27 @@ public class TareaServiceImp implements TareaService {
 
 	@Override
 	public Long guardarTarea(Tarea tarea) {
-		return tareaDAO.guardarTarea(tarea);
+		return tareaDAO.guardar(tarea);
 
 	}
 
 	
 	@Override
 	public Tarea recuperarTareaPorId(Long id) {
-		return tareaDAO.recuperarTareaPorId(id);
+		return tareaDAO.buscarPorId(id);
 	}
 
 	
 	@Override
 	public void borrarTareaPorId(Long id) {
-		tareaDAO.borrarTareaPorId(id);
+		Tarea tarea = tareaDAO.buscarPorId(id);
+		tareaDAO.borrar(tarea);
 			
 	}
 
 	@Override
 	public void editarTarea(Tarea tarea) {
-		tareaDAO.editarTarea(tarea);
+		tareaDAO.actualizar(tarea);
 		
 	}
 
@@ -65,10 +66,10 @@ public class TareaServiceImp implements TareaService {
 
 	@Override
 	public Long guardarComentarioTarea(Comentario comentario, Long idTarea){
-		Tarea tarea = tareaDAO.recuperarTareaPorId(idTarea);
+		Tarea tarea = tareaDAO.buscarPorId(idTarea);
 		tarea.getComentarios().add(comentario);
-		tareaDAO.editarTarea(tarea);
-		Long idActual=comentarioDAO.guardarComentario(comentario);
+		tareaDAO.actualizar(tarea);
+		Long idActual=comentarioDAO.guardar(comentario);
 		
 		return idActual;
 	}

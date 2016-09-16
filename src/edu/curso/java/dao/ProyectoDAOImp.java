@@ -20,48 +20,29 @@ import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.autocomplete.ItemAutoComplete;
 
 @Repository
-public class ProyectoDAOImp implements ProyectoDAO {
+public class ProyectoDAOImp extends GenericDAOImp<Proyecto, Long> implements ProyectoDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	@Override
-	public Long guardarProyecto(Proyecto proyecto) {
-		return (Long) sessionFactory.getCurrentSession().save(proyecto);
-	}
-
-	@SuppressWarnings("unchecked")
+		@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> listarProyectos() {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Proyecto as p");
 		return query.list();
 	}
 
-	@Override
-	public Proyecto recuperarProyectoPorId(Long id) {
-		return (Proyecto) sessionFactory.getCurrentSession().load(Proyecto.class, id);
-	}
-
+	
 	@Override
 	public void agregarUsuarioProyecto(Usuario usuario, Long id) {
-		Proyecto proyecto = recuperarProyectoPorId(id);
+		Proyecto proyecto = buscarPorId(id);
 		List<Usuario> usuarios = proyecto.getUsuarios();
 		usuarios.add(usuario);
 		proyecto.setUsuarios(usuarios);
 	}
 
-	@Override
-	public void borrarProyectoPorId(Long id) {
-		Proyecto proyecto = this.recuperarProyectoPorId(id);
-		sessionFactory.getCurrentSession().delete(proyecto);
-	}
-
-	@Override
-	public void editarProyecto(Proyecto proyecto) {
-		sessionFactory.getCurrentSession().update(proyecto);
-
-	}
-
+	
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> buscarProyectos(String textoBuscar, Date fechaIni2, Date fechaFin2) {

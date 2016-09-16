@@ -26,7 +26,7 @@ public class UsuarioServiceImp implements UsuarioService {
 	 */
 	@Override
 	public Long crearNuevoUsuario(Usuario usuario) {
-		return usuarioDAO.guardarUsuario(usuario);
+		return usuarioDAO.guardar(usuario);
 	}
 	
 	/* (non-Javadoc)
@@ -43,15 +43,16 @@ public class UsuarioServiceImp implements UsuarioService {
 	@Override
 	public Usuario recuperarUsuarioPorId(Long id) {
 		log.info("Recuperando el usuario con id: " + id);
-		return usuarioDAO.recuperarUsuarioPorId(id);
+		return usuarioDAO.buscarPorId(id);
 	}
 
 	@Override
 	public void borrarUsuario(Long id) {
-		usuarioDAO.borrarUsuarioPorId(id);
+		Usuario usuario = usuarioDAO.buscarPorId(id);
+		usuarioDAO.borrar(usuario);
 	}
 	
 	public void editarUsuario(Usuario usuario) {
-		usuarioDAO.editarUsuario(usuario);
+		usuarioDAO.actualizar(usuario);
 	}
 }

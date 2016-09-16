@@ -5,17 +5,9 @@ import java.util.List;
 import edu.curso.java.bo.Comentario;
 
 import edu.curso.java.bo.Tarea;
+import edu.curso.java.bo.Usuario;
 
-public interface TareaDAO {
-
-	public Long guardarTarea(Tarea tarea);
-	
-	Tarea recuperarTareaPorId(Long id);
-
-	void borrarTareaPorId(Long id);
-	
-
-	void editarTarea(Tarea tarea);
+public interface TareaDAO extends GenericDAO<Tarea, Long> {
 	
 	List<Tarea> listarTareas();
 

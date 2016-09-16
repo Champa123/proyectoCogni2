@@ -29,7 +29,7 @@ public class ProyectoServiceImp implements ProyectoService {
 	UsuarioDAO usuarioDAO;
 	@Override
 	public Long guardarProyecto(Proyecto proyecto) {
-		return proyectoDAO.guardarProyecto(proyecto);
+		return proyectoDAO.guardar(proyecto);
 	}
 	
 	@Override
@@ -40,7 +40,7 @@ public class ProyectoServiceImp implements ProyectoService {
 	@Override
 	public Proyecto recuperarProyectoPorId(Long id) {
 		
-		return proyectoDAO.recuperarProyectoPorId(id);
+		return proyectoDAO.buscarPorId(id);
 	}
 
 	@Override
@@ -51,40 +51,41 @@ public class ProyectoServiceImp implements ProyectoService {
 
 	@Override
 	public void borrarProyectoPorId(Long id) {
-		proyectoDAO.borrarProyectoPorId(id);
+		Proyecto proyecto = proyectoDAO.buscarPorId(id);
+		proyectoDAO.borrar(proyecto);
 		
 	}
 
 	@Override
 	public void editarProyecto(Proyecto proyecto) {
-		proyectoDAO.editarProyecto(proyecto);
+		proyectoDAO.actualizar(proyecto);
 		
 	}
 
 	@Override
 	public Long guardarProyecto(Proyecto proyecto, Long idUsuarioPrincipal, List<Long> idUsuarios) {
 		
-		Usuario usuario = usuarioDAO.recuperarUsuarioPorId(idUsuarioPrincipal);
+		Usuario usuario = usuarioDAO.buscarPorId(idUsuarioPrincipal);
 		proyecto.setUsuarioPrincipal(usuario);
 		for (Long idUsuario : idUsuarios) {
-			proyecto.getUsuarios().add(usuarioDAO.recuperarUsuarioPorId(idUsuario));
+			proyecto.getUsuarios().add(usuarioDAO.buscarPorId(idUsuario));
 		}
-		proyectoDAO.guardarProyecto(proyecto);
+		proyectoDAO.guardar(proyecto);
 		return proyecto.getId();
 	}
 
 	@Override
 	public Long actualizarProyecto(Proyecto proyecto, Long idUsuarioPrincipal, List<Long> idUsuarios) {
-		Usuario usuarioPpal = usuarioDAO.recuperarUsuarioPorId(idUsuarioPrincipal);
+		Usuario usuarioPpal = usuarioDAO.buscarPorId(idUsuarioPrincipal);
 		proyecto.getUsuarios().clear();
 		for (Long id : idUsuarios) {
-			Usuario usuario = usuarioDAO.recuperarUsuarioPorId(id);
+			Usuario usuario = usuarioDAO.buscarPorId(id);
 			proyecto.getUsuarios().add(usuario);
 		}
 			
 		
 		proyecto.setUsuarioPrincipal(usuarioPpal);
-		proyectoDAO.editarProyecto(proyecto);
+		proyectoDAO.actualizar(proyecto);
 		return proyecto.getId();
 		
 	}
@@ -106,21 +107,21 @@ public class ProyectoServiceImp implements ProyectoService {
 	
 	@Override
 	public Long guardarTareaProyecto(Tarea tarea, Long idProyecto) throws HorasInsuficientesException{
-		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
+		Proyecto proyecto = proyectoDAO.buscarPorId(idProyecto);
 		
 		proyecto.agregarTarea(tarea);
 		
-		proyectoDAO.editarProyecto(proyecto);
-		Long idActual=tareaDAO.guardarTarea(tarea);
+		proyectoDAO.actualizar(proyecto);
+		Long idActual=tareaDAO.guardar(tarea);
 		return idActual;
 
 	}
 	@Override
 	public void guardarEdicionTareaProyecto(Tarea tarea, Long idProyecto){
-		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
+		Proyecto proyecto = proyectoDAO.buscarPorId(idProyecto);
 		
-		proyectoDAO.editarProyecto(proyecto);
-		tareaDAO.editarTarea(tarea);
+		proyectoDAO.actualizar(proyecto);
+		tareaDAO.actualizar(tarea);
 		
 		
 	}

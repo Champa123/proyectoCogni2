@@ -15,34 +15,11 @@ import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.autocomplete.ItemAutoComplete;
 
 @Repository
-public class TareaDAOImp implements TareaDAO {
+public class TareaDAOImp extends GenericDAOImp<Tarea, Long> implements TareaDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory; 
 	
-
-	@Override
-	public Long guardarTarea(Tarea tarea) {
-		return  (Long) sessionFactory.getCurrentSession().save(tarea);
-	}
-
-
-	@Override
-	public Tarea recuperarTareaPorId(Long id) {
-		return (Tarea) sessionFactory.getCurrentSession().load(Tarea.class, id);
-	}
-
-	@Override
-	public void borrarTareaPorId(Long id) {
-		Tarea tarea = this.recuperarTareaPorId(id);
-		sessionFactory.getCurrentSession().delete(tarea);
-	}
-
-	@Override
-	public void editarTarea(Tarea tarea) {
-		sessionFactory.getCurrentSession().update(tarea);	
-	}
-
 
 	@Override
 	public List<Tarea> listarTareas() {

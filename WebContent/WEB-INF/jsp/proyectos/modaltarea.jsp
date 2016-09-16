@@ -65,7 +65,7 @@
            		<th></th>
            		</tr>
            		
-           			<c:forEach items="${tarea.comentarios}" begin="0" end="4" var="c">
+           			<c:forEach items="${tarea.comentarios}" begin="0" end="9" var="c">
            			<tr>
            				<td>
            					${c.comentario}

@@ -28,7 +28,7 @@ public class ComentarioServiceImp implements ComentarioService {
 	@Override
 	public Long guardarComentario(Comentario comentario) {
 		
-		return comentarioDAO.guardarComentario(comentario);
+		return comentarioDAO.guardar(comentario);
 	}
 
 	@Override
@@ -40,16 +40,17 @@ public class ComentarioServiceImp implements ComentarioService {
 	@Override
 	public Comentario recuperarComentarioPorId(Long id) {
 		
-		return comentarioDAO.recuperarComentarioPorId(id);
+		return comentarioDAO.buscarPorId(id);
 	}
 	
 	@Override
 	public void borrarComentario(Long idComentario, Long idTarea) {
-		Comentario comentario = comentarioDAO.recuperarComentarioPorId(idComentario);
-		Tarea tarea = tareaDAO.recuperarTareaPorId(idTarea);
+		Comentario comentario = comentarioDAO.buscarPorId(idComentario);
+		Tarea tarea = tareaDAO.buscarPorId(idTarea);
 		tarea.getComentarios().remove(comentario);
-		tareaDAO.editarTarea(tarea);
-		comentarioDAO.borrarComentario(comentario.getId());
+		tareaDAO.actualizar(tarea);
+		
+		comentarioDAO.borrar(comentario);
 	}
 	
 }

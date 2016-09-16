@@ -13,14 +13,10 @@ import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.autocomplete.ItemAutoComplete;
 
 @Repository
-public class ComentarioDAOImp implements ComentarioDAO {
+public class ComentarioDAOImp extends GenericDAOImp<Comentario, Long> implements ComentarioDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	@Override
-	public Long guardarComentario(Comentario comentario) {
-		return (Long) sessionFactory.getCurrentSession().save(comentario);
-	}
 
 	@Override
 	public List<Comentario> listarComentarios() {
@@ -30,16 +26,9 @@ public class ComentarioDAOImp implements ComentarioDAO {
 	}
 
 	@Override
-	public Comentario recuperarComentarioPorId(Long id) {
-		return (Comentario) sessionFactory.getCurrentSession().load(Comentario.class, id);
-		}
-
-	@Override
-	public void borrarComentario(Long id) {
-		Comentario comentario= this.recuperarComentarioPorId(id);
-		sessionFactory.getCurrentSession().delete(comentario);		
+	public void borrar (Comentario comentario){
+		
 	}
-
 
 	
 }
