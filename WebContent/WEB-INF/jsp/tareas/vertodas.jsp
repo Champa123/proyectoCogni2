@@ -4,7 +4,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/general/template_top.jsp" />
 <h3>Proyecto: ${proyecto.nombre}</h3>
-<table class="table table-striped table-bordered table-hover">
+<script type="text/javascript">
+$(document).ready(function(){
+$("#tabla").delegate(".btn-modal-tarea", "click", function(){
+	var id = $(this).data("id-tarea");
+	$.get("modaltarea.html?id=" + id, function(resp){
+		$("#myModalTarea").html(resp);
+		$("#myModalTarea").modal("show");
+	});
+});
+});
+</script>
+<table id="tabla" class="table table-striped table-bordered table-hover">
 	<tr>
 		<th>Id</th>
 		<th>Titulo</th>
@@ -69,5 +80,6 @@
 			
 	</c:forEach>
 </table>
+<div class="modal fade" id="myModalTarea" role="dialog"></div>
 
 <c:import url="/general/template_bottom.jsp" />
