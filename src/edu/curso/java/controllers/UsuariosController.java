@@ -25,10 +25,9 @@ public class UsuariosController {
 	
 	@Autowired
 	private ProyectoService proyectoService;
-
-	// TODO para despues cuando se le asignen tareas a usuarios
-//	@Autowired
-//	private TareaService tareaService;
+	
+	@Autowired
+	private TareaService tareaService;
 
 	@RequestMapping(value = "/listar")
 	public String listar(Model model) {
@@ -47,12 +46,11 @@ public class UsuariosController {
 
 	// borra un usuario de la base y lo quita de todos los proyectos y
 	// todas las tareas en las que estaba.
-	// si era el principal de un proyecto, queda en null?
+	// si era el principal de un proyecto, queda en null
 	@RequestMapping(value = "/borrarusuario")
 	public String borrarUsuario(@RequestParam Long id, Model model) {
-		// TODO para cuando se le asignen tareas a usuarios
-//		tareaService.quitarUsuario(id)
 		Usuario usuario = usuarioService.recuperarUsuarioPorId(id);
+		tareaService.desligarUsuario(usuario);
 		proyectoService.desligarUsuario(usuario);
 		usuarioService.borrarUsuario(id);
 		return "redirect:/usuarios/listar.html";

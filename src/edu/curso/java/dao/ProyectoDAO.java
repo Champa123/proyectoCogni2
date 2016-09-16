@@ -26,4 +26,6 @@ public interface ProyectoDAO {
 	List<Proyecto> buscarProyectos(String term);
 
 	List<Proyecto> buscarProyectosPorIdUsuario(Long id);
+
+	public Proyecto buscarProyectoPorIdTarea(Long id);
 }

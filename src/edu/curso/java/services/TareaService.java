@@ -5,6 +5,7 @@ import java.util.List;
 import edu.curso.java.bo.Comentario;
 
 import edu.curso.java.bo.Tarea;
+import edu.curso.java.bo.Usuario;
 
 public interface TareaService {
 
@@ -21,5 +22,9 @@ public interface TareaService {
 	public List<Tarea> buscarTareasPorNombre(String textoTarea);
 	
 	public Long guardarComentarioTarea(Comentario comentario, Long idTarea);
+
+	public void desligarUsuario(Usuario usuario);
+	
+	public List<Tarea> buscarTareasPorIdUsuario(Long id);
 
 }

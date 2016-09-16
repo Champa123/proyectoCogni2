@@ -20,4 +20,6 @@ public interface TareaDAO {
 	List<Tarea> listarTareas();
 
 	public List<Tarea> buscarTareasPorNombre(String textoTarea);
+
+	public List<Tarea> buscarTareasPorIdUsuario(Long id);
 }

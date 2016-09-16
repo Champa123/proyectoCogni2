@@ -124,21 +124,34 @@ public class TareaController {
 	@RequestMapping(value = "/guardarediciontarea", method = RequestMethod.POST)
 	public String guardarEdicionTarea(@RequestParam Long id ,@ModelAttribute("tareaForm") TareaForm tareaForm, Model model) {
 		Tarea tarea = tareaService.recuperarTareaPorId(id);
+
+		Long horasOld = tarea.getHoras();
+		Proyecto proyecto = proyectoService.buscarProyectoPorIdTarea(id);
+		
 		Usuario usuario = null;
 		List<Usuario> usuarios = new ArrayList<>();
-	
-			tarea.setTitulo(tareaForm.getTitulo());
-			tarea.setHoras(tareaForm.getHoras());
-			tarea.setEstado(tareaForm.getEstado());
-			
-			for (Long idUsuario : tareaForm.getIdUsuarios()) {
-				usuario = usuarioService.recuperarUsuarioPorId(idUsuario);
-				usuarios.add(usuario);
-			}
-			tarea.setUsuarios(usuarios);
-			tareaService.editarTarea(tarea);
-		return "redirect:/proyectos/index.html";
-}
+		for (Long idUsuario : tareaForm.getIdUsuarios()) {
+			usuario = usuarioService.recuperarUsuarioPorId(idUsuario);
+			usuarios.add(usuario);
+		}
+		tarea.setUsuarios(usuarios);
+		
+		tarea.setTitulo(tareaForm.getTitulo());
+		tarea.setHoras(tareaForm.getHoras());
+		tarea.setEstado(tareaForm.getEstado());
+
+		String returnPage = "redirect:/proyectos/index.html";
+		try {
+			proyecto.editarHorasTarea( horasOld - tarea.getHoras() );
+//			guradarEdicionTareaProyecto edita la tarea
+//			tareaService.editarTarea(tarea);
+			proyectoService.guardarEdicionTareaProyecto(tarea, proyecto.getId());
+		} catch (HorasInsuficientesException e) {
+			returnPage = "/error/horasInsuficientes";
+		}
+		
+		return returnPage;
+	}
 	
 	@RequestMapping(value = "/guardarnuevocomentario", method = RequestMethod.GET)
 	public String guardarNuevaTarea(@RequestParam Long id, Model model) {
