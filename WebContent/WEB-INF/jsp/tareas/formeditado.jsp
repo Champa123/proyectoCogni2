@@ -38,7 +38,7 @@ $(function(){
 		</div>
 		<div class="form-group">
 			<label for="horas">Horas</label>
-			<form:input class="form-control" path="horas" type="number" />
+			<form:input class="form-control" path="horas" type="number" min="1" />
 		</div>
 
 		<div class="form-group">

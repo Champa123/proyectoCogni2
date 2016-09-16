@@ -35,7 +35,7 @@ $(function(){
 
 	<div class="form-group">
 		<label for="horas">Horas</label>
-		<form:input class="form-control" path="horas" type="number" />
+		<form:input class="form-control" path="horas" type="number" min="1" />
 	</div>
 <div class="form-group">
 			<label for="idUsuarios">Usuarios </label>
@@ -46,8 +46,7 @@ $(function(){
 		</div>
 	<div class="form-group">
 		<input type="submit" class="btn btn-success" value="Guardar">
-		<a href="guardarnuevatarea.html?id=${ID}" 
-					class="btn btn-danger">Volver </a>
+		<a href="listartareas.html" class="btn btn-danger">Volver </a>
 	</div>
 </form:form>
 	
