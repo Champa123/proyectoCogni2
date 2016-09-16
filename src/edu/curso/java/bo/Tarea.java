@@ -12,31 +12,34 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Tarea {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String titulo;
-
 	private Long horas;
-	
-
 	private String estado;
-
-	@OneToMany 
+	@OneToMany
 	private List<Comentario> comentarios = new ArrayList<>();
-	@ManyToMany 
+	@ManyToMany
 	private List<Usuario> usuarios = new ArrayList<>();
 	
+	public void quitarUsuario(Usuario usuario) {
+		usuarios.remove(usuario);
+	}
+
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
+
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
+
 	public List<Comentario> getComentarios() {
 		return comentarios;
 	}
+
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
@@ -44,15 +47,19 @@ public class Tarea {
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getTitulo() {
 		return titulo;
 	}
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -61,6 +68,7 @@ public class Tarea {
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -83,19 +91,20 @@ public class Tarea {
 		return true;
 	}
 
-	
 	public Long getHoras() {
 		return horas;
 	}
+
 	public void setHoras(Long horas) {
 		this.horas = horas;
 	}
+
 	public String getEstado() {
 		return estado;
 	}
+
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
-	
 }

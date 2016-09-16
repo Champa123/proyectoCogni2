@@ -27,8 +27,7 @@ public class Proyecto {
 	private Usuario usuarioPrincipal;
 	@ManyToMany
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
-	@OneToMany (cascade= CascadeType.ALL)// TODO
-//	@OneToMany
+	@OneToMany (cascade= CascadeType.ALL)
 	private List<Tarea> tareas = new ArrayList<>();
 	private Date fechaInicio = new Date();
 	private Date fechaFin = new Date();
@@ -138,8 +137,6 @@ public class Proyecto {
 	}
 
 	public void quitarUsuario(Usuario usuario) {
-		// TODO if not this usuarioPrincipal not null hace falta?
-		
 		if ( getUsuarioPrincipal() == usuario ) {
 		}
 		setUsuarioPrincipal(null);

@@ -127,12 +127,10 @@ public class ProyectoServiceImp implements ProyectoService {
 
 	@Override
 	public void desligarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
-//		List<Proyecto> proyectosEdit = new ArrayList<Proyecto>();
 		List<Proyecto> proyectos = buscarProyectosPorIdUsuario(usuario.getId());
 		for (Proyecto proyecto : proyectos) {
 			proyecto.quitarUsuario(usuario);
-			editarProyecto(proyecto);// TODO preguntar si es una buena practica
+			editarProyecto(proyecto);
 		}
 	}
 

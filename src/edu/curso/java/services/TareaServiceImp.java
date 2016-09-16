@@ -72,6 +72,21 @@ public class TareaServiceImp implements TareaService {
 		
 		return idActual;
 	}
+
+
+	@Override
+	public void desligarUsuario(Usuario usuario) {
+		List<Tarea> tareas = buscarTareasPorIdUsuario(usuario.getId());
+		for (Tarea tarea : tareas) {
+			tarea.quitarUsuario(usuario);
+			editarTarea(tarea);
+		}
+	}
+
+
+	public List<Tarea> buscarTareasPorIdUsuario(Long id) {
+		return tareaDAO.buscarTareasPorIdUsuario(id);
+	}
 	
 	
 }
